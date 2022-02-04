@@ -2,16 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour {
-    public float speed = 1f;
-    public float gravity = 1f;
+    public float defaultSpeed = 1f;
+    public int timeDash = 20;
+    private float speed = 1f;
+    private float dashSpeed = 2f;
     private int scale = 1;
     private float horizontalInput = 0f;
     private float verticalInput = 0f;
+
+    private Vector2 input;
 
     private Rigidbody2D _rigidbody;
 
@@ -22,35 +27,65 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+
+        movimiento();
+
+        flip();
+
+    }
+
+    void movimiento() {
+        bool up = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+        bool down = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+        bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+        bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+
+        if (up) {
+            input.y = 1;
+        } else if (down) {
+            input.y = -1;
+        }
+        else {
+            input.y = 0;
+        }
+        
+        if (right) {
+            input.x = 1;
+        } else if (left) {
+            input.x = -1;
+        }
+        else {
+            input.x = 0;
+        }
+        
+        _rigidbody.velocity = new Vector2(input.normalized.x * speed, input.normalized.y * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            StartCoroutine("dash");
+        }
+        
+    }
+
+    IEnumerator dash() {
+        speed = dashSpeed;
+        
+        for (int i = 0; i < timeDash; i++) {
+            yield return null;
+        }
+
+        speed = defaultSpeed;
+    }
+
+    void flip() {
         Vector3 localScale = transform.localScale;
 
-        Debug.Log(horizontalInput + "  " + verticalInput);
-        
-
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-
-        verticalInput = Input.GetAxisRaw("Vertical");
-
-
-        Vector2 verticalMovement = new Vector2(verticalInput, 0f);
-        Vector2 horizontalMovement = new Vector2(horizontalInput, 0f);
-
-        float verticalVelocity = verticalMovement.normalized.x * speed;
-        float horizontalVelocity = horizontalMovement.normalized.x * speed;
-
-
-        _rigidbody.velocity = new Vector2(horizontalVelocity, verticalVelocity);
-
-        if (horizontalInput > 0) {
+        if (input.x > 0) {
             localScale.x = scale;
         }
-        else if (horizontalInput < 0) {
+        else if (input.x < 0) {
             localScale.x = -scale;
         }
 
         transform.localScale = localScale;
-
-        if (Input.GetButtonDown("Jump") && jump == true) {
-        }
     }
 }
