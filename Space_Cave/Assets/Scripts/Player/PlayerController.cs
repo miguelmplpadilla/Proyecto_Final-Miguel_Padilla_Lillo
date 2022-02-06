@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour {
     private int scale = 1;
     private Animator animator;
 
-    private bool deslizar = false;
-
     private Vector2 input;
 
     private Rigidbody2D _rigidbody;
