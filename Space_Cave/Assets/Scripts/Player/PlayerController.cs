@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     private float dashSpeed = 2f;
     private int scale = 1;
     private Animator animator;
+    private bool stop = false;
 
     private Vector2 input;
 
@@ -28,9 +29,11 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
 
-        flip();
+        if (stop == false) {
+            flip();
         
-        movimiento();
+            movimiento();
+        }
 
     }
 
@@ -100,5 +103,14 @@ public class PlayerController : MonoBehaviour {
         }
 
         transform.localScale = localScale;
+    }
+
+    void stoping() {
+        if (stop == false) {
+            stop = true;
+        }
+        else {
+            stop = false;
+        }
     }
 }
