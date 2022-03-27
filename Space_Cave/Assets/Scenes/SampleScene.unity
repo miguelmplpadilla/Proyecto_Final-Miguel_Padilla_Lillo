@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 285273644}
   - component: {fileID: 285273643}
   - component: {fileID: 285273642}
+  - component: {fileID: 285273647}
   - component: {fileID: 285273640}
   - component: {fileID: 285273646}
   m_Layer: 0
@@ -259,7 +260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285273639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7865151, y: -0.36419004, z: 0}
+  m_LocalPosition: {x: -0.764, y: 0.106, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -282,6 +283,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0074273646, y: -0.013812214}
   m_Size: {x: 0.09751934, y: 0.18570894}
   m_Direction: 0
+--- !u!114 &285273647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285273639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad670514721205042ad9c3a273c46855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 285273643}
 --- !u!1 &484129734
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +493,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
