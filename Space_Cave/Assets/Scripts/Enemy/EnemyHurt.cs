@@ -27,8 +27,6 @@ public class EnemyHurt : MonoBehaviour
                 Destroy(transform.parent.gameObject);
             }
         }
-        
-        Debug.Log(entrado);
     }
 
     private void OnTriggerStay2D(Collider2D other)

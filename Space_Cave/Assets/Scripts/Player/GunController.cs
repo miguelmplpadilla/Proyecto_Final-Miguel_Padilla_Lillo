@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,10 +9,18 @@ public class GunController : MonoBehaviour
 
     public Animator animator;
     public GameObject player;
+    public GameObject shootPoint;
+    public GameObject bullet;
+    private Rigidbody2D playerRigidbody;
+    public float bulletSpeed = 6;
     public bool gun = false;
-    private bool shooting = false;
+    public bool shooting = false;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        playerRigidbody = GetComponent<Rigidbody2D>();
+    }
+
     void Update() {
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
@@ -28,7 +37,6 @@ public class GunController : MonoBehaviour
 
                 if (shooting == false) {
                     shoot();
-                    shooting = true;
                 }
 
             }
@@ -37,7 +45,23 @@ public class GunController : MonoBehaviour
     }
 
     void shoot() {
-        player.SendMessageUpwards("stoping");
         
+        animator.SetTrigger("shoot");
+
+        Vector3 start = shootPoint.transform.position;
+        
+        GameObject bullet = (GameObject) Instantiate(this.bullet, start, transform.rotation);
+        Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+
+        if (transform.localScale.x > 0)
+        {
+            bulletRigidbody.velocity = new Vector2(1f * bulletSpeed, 0 * bulletSpeed);
+        }
+        else
+        {
+            bulletRigidbody.velocity = new Vector2(-1f * bulletSpeed, 0 * bulletSpeed);
+        }
+
     }
+    
 }

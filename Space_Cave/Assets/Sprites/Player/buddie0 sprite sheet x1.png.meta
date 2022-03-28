@@ -2296,7 +2296,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+      pivot: {x: 0.5203295, y: 0.515991}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2529,7 +2529,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      buddie0 sprite sheet x1_9: 1595214038
+      buddie0 sprite sheet x1_46: -633511069
       buddie0 sprite sheet x1_108: 1320133920
       buddie0 sprite sheet x1_44: 211319853
       buddie0 sprite sheet x1_80: -227658810
@@ -2593,15 +2593,15 @@ TextureImporter:
       buddie0 sprite sheet x1_101: 249961639
       buddie0 sprite sheet x1_102: 1083128258
       buddie0 sprite sheet x1_21: 47010446
-      buddie0 sprite sheet x1_39: -767159688
+      buddie0 sprite sheet x1_55: -777012974
       buddie0 sprite sheet x1_105: 320517693
       buddie0 sprite sheet x1_5: -1637090659
       buddie0 sprite sheet x1_50: 936936873
       buddie0 sprite sheet x1_82: 1178000805
-      buddie0 sprite sheet x1_55: -777012974
-      buddie0 sprite sheet x1_0: -471608374
       buddie0 sprite sheet x1_61: 1181812361
+      buddie0 sprite sheet x1_0: -471608374
       buddie0 sprite sheet x1_30: -1797832684
+      buddie0 sprite sheet x1_39: -767159688
       buddie0 sprite sheet x1_107: -534837840
       buddie0 sprite sheet x1_38: -939975470
       buddie0 sprite sheet x1_98: 2068330340
@@ -2643,7 +2643,7 @@ TextureImporter:
       buddie0 sprite sheet x1_35: 1577265008
       buddie0 sprite sheet x1_36: 142737043
       buddie0 sprite sheet x1_96: 75041017
-      buddie0 sprite sheet x1_46: -633511069
+      buddie0 sprite sheet x1_9: 1595214038
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
