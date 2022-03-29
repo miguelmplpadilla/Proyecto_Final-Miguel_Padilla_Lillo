@@ -5,37 +5,12 @@ using UnityEngine;
 
 public class EnemyHurt : MonoBehaviour
 {
-    private bool entrado = false;
-    private GameObject player;
+    public int life = 2;
 
-    private void Awake()
-    {
-        player = GameObject.FindWithTag("Player");
-    }
-
-    private void Update()
-    {
-        if (entrado == true)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("Golpeado");
-                /*if (player != null)
-                {
-                    player.transform.position = transform.parent.position;
-                }*/
-                Destroy(transform.parent.gameObject);
-            }
+    public void Hit(int damage) {
+        life -= damage;
+        if (life <= 0) {
+            Destroy(gameObject);
         }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        entrado = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        entrado = false;
     }
 }

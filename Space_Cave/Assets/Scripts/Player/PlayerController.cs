@@ -10,11 +10,13 @@ using Vector3 = UnityEngine.Vector3;
 public class PlayerController : MonoBehaviour {
     public float defaultSpeed = 1f;
     public int timeDash = 20;
+    public int life = 5;
     private float speed = 1f;
     private float dashSpeed = 2f;
     private int scale = 1;
     private Animator animator;
     public bool stop = false;
+    public bool dashing = false;
 
     private Vector2 input;
 
@@ -69,19 +71,23 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("run",true);
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                StartCoroutine("dash");
+                //StartCoroutine("dash");
+                animator.SetTrigger("dash");
+                speed = dashSpeed;
             }
         }
         else
         {
             animator.SetBool("run",false);
         }
-
-        _rigidbody.velocity = new Vector2(input.normalized.x * speed, input.normalized.y * speed);
-
+        
+        if (dashing == false) {
+            _rigidbody.velocity = new Vector2(input.normalized.x * speed, input.normalized.y * speed);
+            speed = defaultSpeed;
+        }
     }
 
-    IEnumerator dash()
+    /*IEnumerator dash()
     {
         animator.SetBool("dash",true);
 
@@ -94,7 +100,7 @@ public class PlayerController : MonoBehaviour {
         speed = defaultSpeed;
 
         animator.SetBool("dash",false);
-    }
+    }*/
 
     void flip() {
         Vector3 localScale = transform.localScale;

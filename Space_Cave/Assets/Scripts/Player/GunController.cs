@@ -62,6 +62,8 @@ public class GunController : MonoBehaviour
             bulletRigidbody.velocity = new Vector2(-1f * bulletSpeed, 0 * bulletSpeed);
         }
 
+        bulletRigidbody.transform.localScale = transform.localScale;
+        
     }
     
 }
