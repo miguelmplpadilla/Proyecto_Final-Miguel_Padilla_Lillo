@@ -9,7 +9,7 @@ public class MeleeController : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D other) {
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            if (other.CompareTag("HurtBoxMelee")) {
+            if (other.CompareTag("HurtBoxEnemy") || other.CompareTag("Destroy")) {
                 EnemyHurt hurt = other.GetComponentInParent<EnemyHurt>();
                 hurt.Hit(damage);
             }

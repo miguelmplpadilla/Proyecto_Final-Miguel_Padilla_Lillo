@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - HurtBoxBullet
   - HurBoxPlayer
-  - HurtBoxMelee
+  - Destroy
+  - HurtBoxEnemy
   layers:
   - Default
   - TransparentFX

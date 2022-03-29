@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using DefaultNamespace;
 using Unity.VisualScripting;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
     public bool stop = false;
     public bool dashing = false;
+    private Blink blink;
 
     private Vector2 input;
 
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour {
     private void Awake() {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
+        blink = gameObject.GetComponent<Blink>();
         speed = defaultSpeed;
     }
 
@@ -39,6 +42,11 @@ public class PlayerController : MonoBehaviour {
         else
         {
             _rigidbody.velocity = new Vector2(input.normalized.x * 0, input.normalized.y * 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            blink.takeDamage();
         }
 
     }
@@ -71,7 +79,6 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("run",true);
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                //StartCoroutine("dash");
                 animator.SetTrigger("dash");
                 speed = dashSpeed;
             }
@@ -87,20 +94,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    /*IEnumerator dash()
+    public void hit(int damage)
     {
-        animator.SetBool("dash",true);
-
-        speed = dashSpeed;
-
-        for (int i = 0; i < timeDash; i++) {
-            yield return null;
+        life -= damage;
+        if (life <= 0)
+        {
+            animator.SetTrigger("death");
         }
-
-        speed = defaultSpeed;
-
-        animator.SetBool("dash",false);
-    }*/
+    }
 
     void flip() {
         Vector3 localScale = transform.localScale;
