@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  enter: 0
 --- !u!1 &8500278253715022371
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +282,7 @@ MonoBehaviour:
   animator: {fileID: 8500278253715022383}
   stop: 0
   dashing: 0
+  blink: {fileID: 5388227976195473666}
   _rigidbody: {fileID: 8500278253715022380}
 --- !u!114 &8500278253715022379
 MonoBehaviour:

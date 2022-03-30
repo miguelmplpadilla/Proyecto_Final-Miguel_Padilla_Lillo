@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102715068}
   - component: {fileID: 102715069}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: HurtBox
   m_TagString: HurtBoxEnemy
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107799149}
   - component: {fileID: 107799150}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmallDetectionCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 607234656}
   - component: {fileID: 607234657}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BigDetectionCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,22 +358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6128887606975237254, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8500278253715022371, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8500278253715022371, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500278253715022376, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8500278253715022377, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -418,10 +406,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8500278253715022382, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: stop
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
 --- !u!1 &1909365520
@@ -436,6 +420,7 @@ GameObject:
   - component: {fileID: 1909365522}
   - component: {fileID: 1909365521}
   - component: {fileID: 1909365524}
+  - component: {fileID: 1909365525}
   m_Layer: 7
   m_Name: SmallRobot
   m_TagString: Enemy
@@ -542,3 +527,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 2
+--- !u!95 &1909365525
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909365520}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3960cb3df5b2f764f84f1c58a928cd49, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

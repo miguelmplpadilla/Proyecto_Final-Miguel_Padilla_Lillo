@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     public Animator animator;
     public bool stop = false;
     public bool dashing = false;
-    private Blink blink;
+    public Blink blink;
     private bool invulnerable = false;
 
     private Vector2 input;
@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour {
         else
         {
             _rigidbody.velocity = new Vector2(input.normalized.x * 0, input.normalized.y * 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            hit(1);
         }
 
     }
@@ -117,5 +121,9 @@ public class PlayerController : MonoBehaviour {
         }
 
         transform.localScale = localScale;
+    }
+
+    void desactivarPlayer() {
+        gameObject.SetActive(false);
     }
 }
