@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
-using DefaultNamespace;
 using Unity.VisualScripting;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
@@ -10,24 +9,21 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour {
     public float defaultSpeed = 1f;
-    public int timeDash = 20;
     public int life = 5;
     private float speed = 1f;
     private float dashSpeed = 2f;
     private int scale = 1;
-    private Animator animator;
+    public Animator animator;
     public bool stop = false;
     public bool dashing = false;
     private Blink blink;
+    private bool invulnerable = false;
 
     private Vector2 input;
 
-    private Rigidbody2D _rigidbody;
+    public Rigidbody2D _rigidbody;
 
     private void Awake() {
-        _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        animator = gameObject.GetComponent<Animator>();
-        blink = gameObject.GetComponent<Blink>();
         speed = defaultSpeed;
     }
 
@@ -42,11 +38,6 @@ public class PlayerController : MonoBehaviour {
         else
         {
             _rigidbody.velocity = new Vector2(input.normalized.x * 0, input.normalized.y * 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            blink.takeDamage();
         }
 
     }
@@ -96,11 +87,23 @@ public class PlayerController : MonoBehaviour {
 
     public void hit(int damage)
     {
-        life -= damage;
-        if (life <= 0)
-        {
-            animator.SetTrigger("death");
+        if (invulnerable == false) {
+            life -= damage;
+            if (life <= 0)
+            {
+                animator.SetTrigger("death");
+            }
+            else {
+                blink.takeDamage(2);
+                StartCoroutine("invulnerabilidad");
+            }
         }
+    }
+
+    IEnumerator invulnerabilidad() {
+        invulnerable = true;
+        yield return new WaitForSeconds(1.5f);
+        invulnerable = false;
     }
 
     void flip() {
