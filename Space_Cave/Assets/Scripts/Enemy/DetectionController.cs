@@ -1,19 +1,53 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DetectionController : MonoBehaviour {
 
-    public AtackController atackController;
+    private AtackController atackController;
     public bool detectado = false;
+    public float numSumar = 1;
+    public bool restar;
 
     private void Awake() {
-        StartCoroutine("sumarDeteccion");
+        atackController = GetComponentInParent<AtackController>();
+        StartCoroutine("srDeteccion");
     }
 
-    IEnumerator sumarDeteccion() {
-        yield return null;
+    IEnumerator srDeteccion() {
+        while (true)
+        {
+            if (detectado == true)
+            {
+                atackController.sumar(numSumar);
+            }
+            else
+            {
+                if (restar == true)
+                {
+                    atackController.restar(numSumar);
+                }
+            }
+
+            yield return new WaitForSeconds(0.5f);
+        }
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            detectado = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            detectado = false;
+        }
+    }
 }
