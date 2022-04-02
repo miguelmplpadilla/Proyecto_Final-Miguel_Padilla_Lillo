@@ -8,6 +8,7 @@ public class AtackController : MonoBehaviour {
     public bool detectado = false;
     public float nivelDeteccion = 0f;
     public GameObject detectionBar;
+    public GameObject detectionAlert;
 
     private void Update()
     {
@@ -18,7 +19,19 @@ public class AtackController : MonoBehaviour {
         {
             detectado = false;
         }
-        
+
+        if (nivelDeteccion > 0 && detectado == false) {
+            detectionAlert.GetComponent<SpriteRenderer>().color = new Color(250f,215f,0,1f);
+        } else if (detectado == true) {
+            detectionAlert.GetComponent<SpriteRenderer>().color = new Color(255f,0,0,1f);
+        } else if (nivelDeteccion <= 0 && detectado == false) {
+            detectionAlert.GetComponent<SpriteRenderer>().color = new Color(250f,215f,0,0);
+        }
+
+        if (detectado == true) {
+            
+        }
+
         float tamano = (nivelDeteccion * 0.2f) / 100;
         detectionBar.transform.localScale = new Vector3(tamano,0.02f,1f );
     }
