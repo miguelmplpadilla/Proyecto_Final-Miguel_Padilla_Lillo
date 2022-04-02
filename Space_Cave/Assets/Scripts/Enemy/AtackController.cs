@@ -9,6 +9,13 @@ public class AtackController : MonoBehaviour {
     public float nivelDeteccion = 0f;
     public GameObject detectionBar;
     public GameObject detectionAlert;
+    public Animator animator;
+    private GameObject player = null;
+    public float distancia = 0f;
+    public float speed = 3f;
+    public GameObject shootingPoint1;
+    public GameObject shootingPoint2;
+    public GameObject bullet;
 
     private void Update()
     {
@@ -20,7 +27,7 @@ public class AtackController : MonoBehaviour {
             detectado = false;
         }
 
-        if (nivelDeteccion > 0 && detectado == false) {
+        if (nivelDeteccion > 0 && !detectado) {
             detectionAlert.GetComponent<SpriteRenderer>().color = new Color(250f,215f,0,1f);
         } else if (detectado == true) {
             detectionAlert.GetComponent<SpriteRenderer>().color = new Color(255f,0,0,1f);
@@ -28,9 +35,40 @@ public class AtackController : MonoBehaviour {
             detectionAlert.GetComponent<SpriteRenderer>().color = new Color(250f,215f,0,0);
         }
 
-        if (detectado == true) {
-            
+        if (nivelDeteccion > 50 || detectado) {
+            if (player != null)
+            {
+                if (player.transform.position.x > gameObject.transform.position.x)
+                {
+                    gameObject.transform.localScale = new Vector3(1f,1f,1f);
+                }
+                else
+                {
+                    gameObject.transform.localScale = new Vector3(-1f,1f,1f);
+                }
+                
+                if (detectado)
+                {
+                    distancia = Vector3.Distance(gameObject.transform.position, player.transform.position);
+                    if (distancia > 1f)
+                    {
+                        animator.SetBool("shoot", false);
+                        animator.SetBool("run", true);
+                        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        animator.SetBool("run", false);
+                        animator.SetBool("shoot", true);
+                    }
+                }
+            }
         }
+        else
+        {
+            animator.SetBool("shoot", false);
+        }
+        
 
         float tamano = (nivelDeteccion * 0.2f) / 100;
         detectionBar.transform.localScale = new Vector3(tamano,0.02f,1f );
@@ -59,6 +97,31 @@ public class AtackController : MonoBehaviour {
         {
             nivelDeteccion = 0;
         }
+    }
+
+    public void setPlayer(GameObject p)
+    {
+        player = p;
+    }
+
+    public void shoot(int point)
+    {
+        Vector3 start;
+        if (point == 1)
+        {
+            Debug.Log("Disparar 1");
+            start = shootingPoint1.transform.position;
+        }
+        else
+        {
+            Debug.Log("Disparar 2");
+            start = shootingPoint2.transform.position;
+        }
+        
+        GameObject bullet = (GameObject) Instantiate(this.bullet, start, transform.rotation);
+        Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+
+        bulletRigidbody.AddForce(player.transform.position*100);
     }
 
 }

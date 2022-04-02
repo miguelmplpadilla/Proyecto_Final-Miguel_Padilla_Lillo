@@ -39,6 +39,7 @@ public class DetectionController : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
+            atackController.setPlayer(other.gameObject);
             detectado = true;
         }
     }
