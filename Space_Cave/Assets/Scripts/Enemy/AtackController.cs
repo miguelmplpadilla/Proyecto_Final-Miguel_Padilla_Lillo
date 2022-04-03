@@ -17,6 +17,7 @@ public class AtackController : MonoBehaviour {
     public GameObject shootingPoint1;
     public GameObject shootingPoint2;
     public GameObject bullet;
+    public float bulletSpeed = 3;
 
     private void Update()
     {
@@ -74,8 +75,8 @@ public class AtackController : MonoBehaviour {
         }
         
 
-        float tamano = (nivelDeteccion * 0.2f) / 100;
-        detectionBar.transform.localScale = new Vector3(tamano,0.02f,1f );
+        //float tamano = (nivelDeteccion * 0.2f) / 100;
+        //detectionBar.transform.localScale = new Vector3(tamano,0.02f,1f );
     }
 
     public void sumar(float num)
@@ -110,7 +111,7 @@ public class AtackController : MonoBehaviour {
 
     public void shoot(int point)
     {
-        Vector3 start;
+        Vector3 start = new Vector3(0,0,0);
         if (point == 1)
         {
             Debug.Log("Disparar 1");
@@ -125,7 +126,16 @@ public class AtackController : MonoBehaviour {
         GameObject bullet = (GameObject) Instantiate(this.bullet, start, transform.rotation);
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
 
-        bulletRigidbody.AddForce(player.transform.position*100);
+        if (transform.localScale.x > 0)
+        {
+            bulletRigidbody.velocity = new Vector2(1f * bulletSpeed, 0 * bulletSpeed);
+        }
+        else
+        {
+            bulletRigidbody.velocity = new Vector2(-1f * bulletSpeed, 0 * bulletSpeed);
+        }
+
+        bulletRigidbody.transform.localScale = transform.localScale;
     }
 
 }
