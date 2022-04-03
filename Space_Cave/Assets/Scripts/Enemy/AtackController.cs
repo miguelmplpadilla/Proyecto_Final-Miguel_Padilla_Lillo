@@ -13,6 +13,7 @@ public class AtackController : MonoBehaviour {
     private GameObject player = null;
     public float distancia = 0f;
     public float speed = 3f;
+    public float speedY = 2f;
     public GameObject shootingPoint1;
     public GameObject shootingPoint2;
     public GameObject bullet;
@@ -50,7 +51,7 @@ public class AtackController : MonoBehaviour {
                 if (detectado)
                 {
                     distancia = Vector3.Distance(gameObject.transform.position, player.transform.position);
-                    if (distancia > 1f)
+                    if (distancia > 0.6f)
                     {
                         animator.SetBool("shoot", false);
                         animator.SetBool("run", true);
@@ -61,6 +62,9 @@ public class AtackController : MonoBehaviour {
                         animator.SetBool("run", false);
                         animator.SetBool("shoot", true);
                     }
+                    
+                    Vector2 posicionY = new Vector2(transform.position.x,player.transform.position.y);
+                    transform.position = Vector2.MoveTowards(transform.position, posicionY, speedY * Time.deltaTime);
                 }
             }
         }

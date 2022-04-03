@@ -9,6 +9,7 @@ public class DetectionController : MonoBehaviour {
     private AtackController atackController;
     public bool detectado = false;
     public float numSumar = 1;
+    public float numRestar = 1;
     public bool restar;
 
     private void Awake() {
@@ -27,7 +28,7 @@ public class DetectionController : MonoBehaviour {
             {
                 if (restar == true)
                 {
-                    atackController.restar(numSumar);
+                    atackController.restar(numRestar);
                 }
             }
 

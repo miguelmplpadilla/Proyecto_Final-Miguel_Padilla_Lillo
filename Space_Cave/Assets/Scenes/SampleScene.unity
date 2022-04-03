@@ -318,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectado: 0
   numSumar: 25
+  numRestar: 1
   restar: 0
 --- !u!1 &519420028
 GameObject:
@@ -466,6 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectado: 0
   numSumar: 15
+  numRestar: 5
   restar: 1
 --- !u!1 &684040238
 GameObject:
@@ -719,11 +721,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8500278253715022377, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.764
+      value: -0.791
       objectReference: {fileID: 0}
     - target: {fileID: 8500278253715022377, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.185
+      value: -0.095
       objectReference: {fileID: 0}
     - target: {fileID: 8500278253715022377, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -918,7 +920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909365520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.232, y: -0.338, z: 0}
+  m_LocalPosition: {x: 0.806, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -982,6 +984,7 @@ MonoBehaviour:
   animator: {fileID: 1909365525}
   distancia: 0
   speed: 0.5
+  speedY: 2
   shootingPoint1: {fileID: 1319624395}
   shootingPoint2: {fileID: 1788885104}
   bullet: {fileID: 4804565282509878687, guid: 7991061e673f4654eba59b3b6a691ba6, type: 3}
