@@ -21,9 +21,9 @@ public class DialogeController : MonoBehaviour {
             if (values[0].Equals(ablante))
             {
                 if (idioma.Equals("ES")) {
-                    textoDialogo.Add(values[1]);
+                    textoDialogo.Add(values[1].Replace(".",","));
                 } else if (idioma.Equals("EN")) {
-                    textoDialogo.Add(values[2]);
+                    textoDialogo.Add(values[2].Replace(".",","));
                 }
             }
         }

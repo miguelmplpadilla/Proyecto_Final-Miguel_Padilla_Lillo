@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Recorder;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCController : MonoBehaviour
 {
@@ -11,10 +14,18 @@ public class NPCController : MonoBehaviour
 
     public Hablantes hablante;
     private String currentFrase = "";
-
+    
+    // Componentes
+    private Animator animator;
+    private GameObject player;
+    
+    
+    // UI
+    public Sprite image;
     public GameObject panel;
-    public GameObject gameObjectTexto;
+    public GameObject objectTexto;
     private TextMeshProUGUI texto;
+    public GameObject imagePanel;
 
     private List<String> frases = new List<string>();
     private DialogeController dialogeController;
@@ -25,7 +36,8 @@ public class NPCController : MonoBehaviour
     private void Awake()
     {
         dialogeController = GetComponent<DialogeController>();
-        texto = gameObjectTexto.GetComponent<TextMeshProUGUI>();
+        texto = objectTexto.GetComponent<TextMeshProUGUI>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     void Start()
@@ -42,13 +54,18 @@ public class NPCController : MonoBehaviour
             {
                 hablando = true;
                 panel.SetActive(true);
+                imagePanel.GetComponent<Image>().sprite = image;
                 StartCoroutine("mostrarFrase");
+                animator.SetBool("talk",true);
+                if (player.transform.position.x > gameObject.transform.position.x)
+                {
+                    gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+                }
+                else
+                {
+                    gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+                }
             }
-        }
-
-        if (hablando == true)
-        {
-            
         }
     }
 
@@ -92,6 +109,7 @@ public class NPCController : MonoBehaviour
         hablar = false;
         hablando = false;
         panel.SetActive(false);
+        animator.SetBool("talk",false);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -99,6 +117,7 @@ public class NPCController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hablar = true;
+            player = other.gameObject;
         }
     }
 
