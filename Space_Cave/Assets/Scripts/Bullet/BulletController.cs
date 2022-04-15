@@ -7,6 +7,18 @@ public class BulletController : MonoBehaviour
 {
     
     public int damage = 1;
+    
+    private void Start()
+    {
+        StartCoroutine("destruir");
+    }
+
+    IEnumerator destruir()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
+    }
+    
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("HurtBoxEnemy")) {

@@ -12,7 +12,7 @@ public class EnemyBulletController : MonoBehaviour
 
     IEnumerator destruir()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
 

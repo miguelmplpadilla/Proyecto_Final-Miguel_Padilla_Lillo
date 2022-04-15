@@ -15,6 +15,8 @@ public class GunController : MonoBehaviour
     public float bulletSpeed = 6;
     public bool gun = false;
     public bool shooting = false;
+    public int bulletNum = 5;
+    public GameObject bullets;
 
     private void Awake()
     {
@@ -34,17 +36,24 @@ public class GunController : MonoBehaviour
         if (gun == true) {
 
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
-
-                if (shooting == false) {
-                    shoot();
+                if (bulletNum > 0)
+                {
+                    if (shooting == false) {
+                        shoot();
+                    }
                 }
-
             }
             
         }
+
+        bullets.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(15*bulletNum, 20);
+        
     }
 
-    void shoot() {
+    void shoot()
+    {
+
+        bulletNum--;
         
         animator.SetTrigger("shoot");
 

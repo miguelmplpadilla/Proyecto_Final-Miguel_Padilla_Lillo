@@ -9,7 +9,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour {
     public float defaultSpeed = 1f;
-    public int life = 5;
+    public int life = 8;
     private float speed = 1f;
     private float dashSpeed = 2f;
     private int scale = 1;
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     public bool dashing = false;
     public Blink blink;
     private bool invulnerable = false;
+    public GameObject vida;
 
     private Vector2 input;
 
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.P)) {
             hit(1);
         }
+
+        vida.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2((20*life), 15.086f);
 
     }
 
