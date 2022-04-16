@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
     public Blink blink;
     private bool invulnerable = false;
     public GameObject vida;
+    private GunController gunController;
 
     private Vector2 input;
 
@@ -26,6 +27,17 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         speed = defaultSpeed;
+        gunController = GetComponent<GunController>();
+    }
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("vida"))
+        {
+            life = PlayerPrefs.GetInt("vida");
+            gunController.bulletNum = PlayerPrefs.GetInt("balas");
+            gameObject.transform.position = new Vector2(PlayerPrefs.GetFloat("playerX"), PlayerPrefs.GetFloat("playerY"));
+        }
     }
 
     void Update()
@@ -39,10 +51,6 @@ public class PlayerController : MonoBehaviour {
         else
         {
             _rigidbody.velocity = new Vector2(input.normalized.x * 0, input.normalized.y * 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P)) {
-            hit(1);
         }
 
         vida.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2((20*life), 15.086f);
