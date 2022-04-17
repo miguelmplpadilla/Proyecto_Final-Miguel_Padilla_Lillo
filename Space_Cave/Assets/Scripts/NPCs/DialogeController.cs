@@ -5,9 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class DialogeController : MonoBehaviour {
-
-    public string idioma = "ES";
-    public List<string> getTextoDialogos(TextAsset dialogos, string ablante)
+    public List<string> getTextoDialogos(TextAsset dialogos, string ablante, string idioma)
     {
         List<string> textoDialogo = new List<string>();
         string fs = dialogos.text;

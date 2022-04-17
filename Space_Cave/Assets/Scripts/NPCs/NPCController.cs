@@ -32,6 +32,7 @@ public class NPCController : MonoBehaviour
 
     private bool hablar = false;
     private bool hablando = false;
+    public string idioma = "ES";
 
     private void Awake()
     {
