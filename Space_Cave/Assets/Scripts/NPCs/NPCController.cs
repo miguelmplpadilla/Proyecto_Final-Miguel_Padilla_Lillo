@@ -26,6 +26,7 @@ public class NPCController : MonoBehaviour
     public GameObject objectTexto;
     private TextMeshProUGUI texto;
     public GameObject imagePanel;
+    private OpcionesContorller opciones;
 
     private List<String> frases = new List<string>();
     private DialogeController dialogeController;
@@ -34,16 +35,16 @@ public class NPCController : MonoBehaviour
     private bool hablando = false;
     public string idioma = "ES";
 
-    private void Awake()
-    {
+    private void Awake() {
+        opciones = GameObject.Find("OpcionesController").GetComponent<OpcionesContorller>();
         dialogeController = GetComponent<DialogeController>();
         texto = objectTexto.GetComponent<TextMeshProUGUI>();
         animator = gameObject.GetComponent<Animator>();
     }
 
-    void Start()
-    {
-        frases = dialogeController.getTextoDialogos(dialogos, hablante.ToString());
+    void Start() {
+        idioma = opciones.getIdioma();
+        frases = dialogeController.getTextoDialogos(dialogos, hablante.ToString(), idioma);
     }
 
     
