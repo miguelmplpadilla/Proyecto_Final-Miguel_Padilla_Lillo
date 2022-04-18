@@ -12,7 +12,7 @@ public class NPCController : MonoBehaviour
     
     public TextAsset dialogos;
 
-    public Hablantes hablante;
+    public string hablante;
     private String currentFrase = "";
     
     // Componentes
@@ -26,25 +26,25 @@ public class NPCController : MonoBehaviour
     public GameObject objectTexto;
     private TextMeshProUGUI texto;
     public GameObject imagePanel;
-    private OpcionesContorller opciones;
+    private OpcionesContorller opcionesContorller;
 
     private List<String> frases = new List<string>();
     private DialogeController dialogeController;
 
     private bool hablar = false;
     private bool hablando = false;
-    public string idioma = "ES";
+    public string idioma = "Español";
 
     private void Awake() {
-        opciones = GameObject.Find("OpcionesController").GetComponent<OpcionesContorller>();
+        opcionesContorller = GameObject.Find("OpcionesController").GetComponent<OpcionesContorller>();
         dialogeController = GetComponent<DialogeController>();
         texto = objectTexto.GetComponent<TextMeshProUGUI>();
         animator = gameObject.GetComponent<Animator>();
     }
 
     void Start() {
-        idioma = opciones.getIdioma();
-        frases = dialogeController.getTextoDialogos(dialogos, hablante.ToString(), idioma);
+        idioma = opcionesContorller.getIdioma();
+        frases = dialogeController.getTextoDialogos(dialogos, hablante, idioma);
     }
 
     
@@ -130,10 +130,9 @@ public class NPCController : MonoBehaviour
             dejarHablar();
         }
     }
-}
-
-public enum Hablantes {
-    NPC1,
-    NPC2,
-    NPC3
+    
+    public void cambiarIdioma() {
+        idioma = opcionesContorller.getIdioma();
+        frases = dialogeController.getTextoDialogos(dialogos, hablante, idioma);
+    }
 }

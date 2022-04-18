@@ -1,3 +1,7 @@
 NPC1,Hola camarada,Hi. comrade
 NPC1,Que tal has dormido?,How did you sleep?
-NPC1,He oido que te necesitan en el laboratorio mas adelante,Heard you're needed in the lab up ahead.
+NPC1,He oido que te necesitan en el laboratorio mas adelante,Heard you're needed in the lab up ahead
+NuevaPartida,Nueva partida,New game
+CargarPartida,Cargar partida,Load game
+Opciones,Opciones,Options
+Salir,Salir,Exit

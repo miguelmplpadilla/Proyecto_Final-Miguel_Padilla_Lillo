@@ -18,9 +18,9 @@ public class DialogeController : MonoBehaviour {
             string[] values = Regex.Split(valueLine, ",");
             if (values[0].Equals(ablante))
             {
-                if (idioma.Equals("ES")) {
+                if (idioma.Equals("Español")) {
                     textoDialogo.Add(values[1].Replace(".",","));
-                } else if (idioma.Equals("EN")) {
+                } else if (idioma.Equals("English")) {
                     textoDialogo.Add(values[2].Replace(".",","));
                 }
             }
