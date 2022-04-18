@@ -9,19 +9,34 @@ public class OpcionesContorller : MonoBehaviour {
 
     public string idioma = "Español";
     public List<GameObject> cambioIdioma = new List<GameObject>();
+    public Animator animatorPanelOpciones;
 
-    public void abrirOpciones(Animator animator) {
-        animator.SetTrigger("abrir");
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            abrirOpciones();
+        }
+    }
+
+    public void abrirOpciones() {
+        animatorPanelOpciones.SetTrigger("abrir");
     }
     
-    public void cerrarOpciones(Animator animator) {
-        animator.SetTrigger("cerrar");
+    public void cerrarOpciones() {
+        animatorPanelOpciones.SetTrigger("cerrar");
     }
 
-    public void cambiarIdioma(TMP_Dropdown dropdown) {
-        idioma = dropdown.options[dropdown.GetComponent<Dropdown>().value].text;
+    public void cambiarIdioma(TMPro.TMP_Dropdown dropdown) {
+        idioma = dropdown.options[dropdown.value].text;
         for (int i = 0; i < cambioIdioma.Count; i++) {
-            cambioIdioma[i].GetComponent<IdiomaOpciones>().cambiarIdioma();
+            if (cambioIdioma[i].CompareTag("UI"))
+            {
+                cambioIdioma[i].GetComponent<IdiomaOpciones>().cambiarIdioma();
+            } else if (cambioIdioma[i].CompareTag("NPC"))
+            {
+                cambioIdioma[i].GetComponent<NPCController>().cambiarIdioma();
+            }
         }
     }
 

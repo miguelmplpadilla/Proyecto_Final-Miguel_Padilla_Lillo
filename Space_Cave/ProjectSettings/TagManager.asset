@@ -8,6 +8,9 @@ TagManager:
   - HurBoxPlayer
   - Destroy
   - HurtBoxEnemy
+  - Opcion
+  - UI
+  - NPC
   layers:
   - Default
   - TransparentFX
