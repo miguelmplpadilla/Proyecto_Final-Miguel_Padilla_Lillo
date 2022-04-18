@@ -15,6 +15,9 @@ public class IdiomaOpciones : MonoBehaviour {
     private void Awake() {
         opcionesContorller = GameObject.Find("OpcionesController").GetComponent<OpcionesContorller>();
         dialogeController = GetComponent<DialogeController>();
+    }
+
+    private void Start() {
         cambiarIdioma();
     }
 

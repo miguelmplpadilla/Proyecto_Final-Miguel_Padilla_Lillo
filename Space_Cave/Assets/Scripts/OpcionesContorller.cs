@@ -10,12 +10,25 @@ public class OpcionesContorller : MonoBehaviour {
     public string idioma = "Español";
     public List<GameObject> cambioIdioma = new List<GameObject>();
     public Animator animatorPanelOpciones;
+    private SaveGame saveGame;
+
+    private void Awake() {
+        saveGame = GetComponent<SaveGame>();
+        idioma = PlayerPrefs.GetString("idioma");
+    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             abrirOpciones();
+        }
+    }
+    
+    public void guardarPartida(bool salir) {
+        saveGame.guardarPartida();
+        if (salir) {
+            Application.Quit();
         }
     }
 
