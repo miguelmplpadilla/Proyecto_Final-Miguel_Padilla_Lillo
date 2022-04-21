@@ -18,8 +18,8 @@ public class NPCController : MonoBehaviour
     // Componentes
     private Animator animator;
     private GameObject player;
-    
-    
+
+
     // UI
     public Sprite image;
     public GameObject panel;
@@ -27,6 +27,7 @@ public class NPCController : MonoBehaviour
     private TextMeshProUGUI texto;
     public GameObject imagePanel;
     private OpcionesContorller opcionesContorller;
+    private BotonInteractuarController botonInteractuarController;
 
     private List<String> frases = new List<string>();
     private DialogeController dialogeController;
@@ -40,6 +41,7 @@ public class NPCController : MonoBehaviour
         dialogeController = GetComponent<DialogeController>();
         texto = objectTexto.GetComponent<TextMeshProUGUI>();
         animator = gameObject.GetComponent<Animator>();
+        botonInteractuarController = GetComponentInChildren<BotonInteractuarController>();
     }
 
     void Start() {
@@ -52,8 +54,8 @@ public class NPCController : MonoBehaviour
     {
         if (hablar == true && hablando == false)
         {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
+            if (Input.GetKeyDown(KeyCode.F)) {
+                player.GetComponent<PlayerController>().stop = true;
                 hablando = true;
                 panel.SetActive(true);
                 imagePanel.GetComponent<Image>().sprite = image;
@@ -108,17 +110,19 @@ public class NPCController : MonoBehaviour
 
     private void dejarHablar()
     {
-        hablar = false;
+        player.GetComponent<PlayerController>().stop = false;
+        StopCoroutine("mostrarFrase");
         hablando = false;
         panel.SetActive(false);
         animator.SetBool("talk",false);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             hablar = true;
+            botonInteractuarController.visible();
             player = other.gameObject;
         }
     }
@@ -127,6 +131,9 @@ public class NPCController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            hablar = false;
+            botonInteractuarController.visible();
+            currentFrase = "";
             dejarHablar();
         }
     }

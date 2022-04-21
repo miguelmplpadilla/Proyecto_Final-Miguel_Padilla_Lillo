@@ -252,22 +252,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4870030172440598747, guid: a7d66c441124ba743a3573bb7b5540a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7015039919867942012, guid: a7d66c441124ba743a3573bb7b5540a6, type: 3}
       propertyPath: m_Name
       value: NPC1
       objectReference: {fileID: 0}
     - target: {fileID: 7015039919867942273, guid: a7d66c441124ba743a3573bb7b5540a6, type: 3}
-      propertyPath: image
-      value: 
-      objectReference: {fileID: -1824471712, guid: 774914b08979d5c48b4fb7281ef4b254, type: 3}
-    - target: {fileID: 7015039919867942273, guid: a7d66c441124ba743a3573bb7b5540a6, type: 3}
       propertyPath: panel
       value: 
       objectReference: {fileID: 1472937164}
-    - target: {fileID: 7015039919867942273, guid: a7d66c441124ba743a3573bb7b5540a6, type: 3}
-      propertyPath: hablante
-      value: NPC1
-      objectReference: {fileID: 0}
     - target: {fileID: 7015039919867942273, guid: a7d66c441124ba743a3573bb7b5540a6, type: 3}
       propertyPath: imagePanel
       value: 
@@ -319,6 +315,10 @@ PrefabInstance:
     - target: {fileID: 7015039919867942278, guid: a7d66c441124ba743a3573bb7b5540a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092527088715688091, guid: a7d66c441124ba743a3573bb7b5540a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7d66c441124ba743a3573bb7b5540a6, type: 3}
@@ -1702,7 +1702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6131229267046429921, guid: 69ca1476551ee9d4b8b242a5bd4b0ccd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.9994507
+      value: -2.9995117
       objectReference: {fileID: 0}
     - target: {fileID: 6131229267046429921, guid: 69ca1476551ee9d4b8b242a5bd4b0ccd, type: 3}
       propertyPath: m_AnchoredPosition.y
