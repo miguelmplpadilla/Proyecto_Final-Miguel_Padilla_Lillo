@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     public Animator animator;
     public bool stop = false;
     public bool dashing = false;
+    public bool mov = true;
     public Blink blink;
     private bool invulnerable = false;
     public GameObject vida;
@@ -43,13 +44,14 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
 
-        if (stop == false) {
+        if (stop == false && mov == true) {
             flip();
         
             movimiento();
         }
         else
         {
+            animator.SetBool("run",false);
             _rigidbody.velocity = new Vector2(input.normalized.x * 0, input.normalized.y * 0);
         }
 

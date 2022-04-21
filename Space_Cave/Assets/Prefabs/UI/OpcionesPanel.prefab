@@ -1331,7 +1331,7 @@ GameObject:
   - component: {fileID: 1491215518323343525}
   m_Layer: 5
   m_Name: Idiomas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1753,7 +1753,7 @@ GameObject:
   - component: {fileID: 8895020022369570161}
   m_Layer: 5
   m_Name: IdiomaTexto
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2050,7 +2050,7 @@ GameObject:
   - component: {fileID: 7406835204273164225}
   m_Layer: 5
   m_Name: Guardar
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2157,7 +2157,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7004469209263282160}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: OpcionesContorller, Assembly-CSharp
+        m_MethodName: guardarPartida
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5404680456226776506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2185,7 @@ GameObject:
   - component: {fileID: 4702130850338635970}
   m_Layer: 5
   m_Name: TextoGuardar
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2332,7 +2344,7 @@ GameObject:
   - component: {fileID: 5678328863630846768}
   m_Layer: 5
   m_Name: Idioma
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2373,7 +2385,7 @@ GameObject:
   - component: {fileID: 7394920573091360370}
   m_Layer: 5
   m_Name: GuardarSalir
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2480,7 +2492,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5682682874423618557}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: OpcionesContorller, Assembly-CSharp
+        m_MethodName: guardarPartida
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &7218334956511566557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,7 +2520,7 @@ GameObject:
   - component: {fileID: 225767564300697178}
   m_Layer: 5
   m_Name: TextoGuardarSalir
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

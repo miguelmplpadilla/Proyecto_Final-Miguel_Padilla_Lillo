@@ -55,7 +55,7 @@ public class NPCController : MonoBehaviour
         if (hablar == true && hablando == false)
         {
             if (Input.GetKeyDown(KeyCode.F)) {
-                player.GetComponent<PlayerController>().stop = true;
+                player.GetComponent<PlayerController>().mov = false;
                 hablando = true;
                 panel.SetActive(true);
                 imagePanel.GetComponent<Image>().sprite = image;
@@ -110,7 +110,7 @@ public class NPCController : MonoBehaviour
 
     private void dejarHablar()
     {
-        player.GetComponent<PlayerController>().stop = false;
+        player.GetComponent<PlayerController>().mov = true;
         StopCoroutine("mostrarFrase");
         hablando = false;
         panel.SetActive(false);
