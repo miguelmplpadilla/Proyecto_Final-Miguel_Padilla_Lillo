@@ -9,15 +9,11 @@ using Image = UnityEngine.UI.Image;
 
 public class DesplazadorController : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IDragHandler
 {
-    
-    // abajo = 0
-    // arriba = 280
-
-    private RectTransform rectTransform;
     private GameObject destino;
 
-    public bool pressed;
+    private bool pressed;
     private bool enDestino = false;
+    public bool listo = false;
 
     private void Update()
     {
@@ -26,15 +22,14 @@ public class DesplazadorController : MonoBehaviour, IPointerUpHandler, IPointerD
             transform.position = destino.transform.position;
         }
     }
-
-    private void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-    }
-
+    
     public void OnPointerUp(PointerEventData eventData)
     {
         pressed = false;
+        if (enDestino == true)
+        {
+            listo = true;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -63,6 +58,7 @@ public class DesplazadorController : MonoBehaviour, IPointerUpHandler, IPointerD
     {
         if (other.CompareTag("Destino"))
         {
+            listo = false;
             enDestino = false;
         }
     }
