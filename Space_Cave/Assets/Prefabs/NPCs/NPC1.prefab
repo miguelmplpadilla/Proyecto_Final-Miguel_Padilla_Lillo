@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7015039919867942277}
   m_Layer: 0
   m_Name: NPC1
-  m_TagString: NPC
+  m_TagString: Interactuar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogos: {fileID: 4900000, guid: 2b5b206a53d8a02459c83f14d8572e30, type: 3}
   hablante: NPC1
-  image: {fileID: -1824471712, guid: 774914b08979d5c48b4fb7281ef4b254, type: 3}
+  image: {fileID: 526121775, guid: 774914b08979d5c48b4fb7281ef4b254, type: 3}
   panel: {fileID: 0}
   objectTexto: {fileID: 0}
   imagePanel: {fileID: 0}
@@ -231,6 +231,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1777844512439589281, guid: 042b7380a543aa249bfc1f725453d626, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713466872431078251, guid: 042b7380a543aa249bfc1f725453d626, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

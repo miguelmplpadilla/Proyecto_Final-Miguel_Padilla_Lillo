@@ -12,6 +12,7 @@ TagManager:
   - UI
   - NPC
   - Destino
+  - Interactuar
   layers:
   - Default
   - TransparentFX

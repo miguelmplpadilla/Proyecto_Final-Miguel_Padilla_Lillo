@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1215180507177419270}
   m_Layer: 0
   m_Name: Bobina
-  m_TagString: Untagged
+  m_TagString: Interactuar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 1215180507251418894}
   m_Layer: 0
   m_Name: Enchufe
-  m_TagString: Untagged
+  m_TagString: Interactuar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 7810568508075073401}
   - component: {fileID: 6128887606975237254}
   - component: {fileID: 8625216328965959910}
+  - component: {fileID: 826049579}
   m_Layer: 8
   m_Name: InteractionBox
   m_TagString: Untagged
@@ -152,6 +153,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   enter: 0
+--- !u!114 &826049579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768651254681926671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1c118385402a3499cc971a4f57d41a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactuar: 102
+  numeroJugador: 1
 --- !u!1 &8437234643933856415
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +333,12 @@ MonoBehaviour:
   blink: {fileID: 5388227976195473666}
   vida: {fileID: 0}
   _rigidbody: {fileID: 8500278253715022380}
+  numeroJugador: 1
+  arriba: 119
+  abajo: 115
+  izquierda: 97
+  derecha: 100
+  deslizar: 304
 --- !u!114 &8500278253715022379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +360,10 @@ MonoBehaviour:
   shooting: 0
   bulletNum: 5
   bullets: {fileID: 0}
+  disparar: 32
+  taser: 49
+  pistola: 50
+  numeroJugador: 1
 --- !u!114 &5388227976195473666
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,6 +35,8 @@ public class NPCController : MonoBehaviour
     private bool hablar = false;
     private bool hablando = false;
     public string idioma = "Español";
+    
+    private GameObject[] players;
 
     private void Awake() {
         opcionesContorller = GameObject.Find("OpcionesController").GetComponent<OpcionesContorller>();
@@ -42,6 +44,7 @@ public class NPCController : MonoBehaviour
         texto = objectTexto.GetComponent<TextMeshProUGUI>();
         animator = gameObject.GetComponent<Animator>();
         botonInteractuarController = GetComponentInChildren<BotonInteractuarController>();
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 
     void Start() {
@@ -50,7 +53,7 @@ public class NPCController : MonoBehaviour
     }
 
     
-    void Update()
+    /*void Update()
     {
         if (hablar == true && hablando == false)
         {
@@ -69,6 +72,27 @@ public class NPCController : MonoBehaviour
                 {
                     gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
                 }
+            }
+        }
+    }*/
+
+    private void empezarHablar()
+    {
+        if (hablar == true && hablando == false)
+        {
+            player.GetComponent<PlayerController>().mov = false;
+            hablando = true;
+            panel.SetActive(true);
+            imagePanel.GetComponent<Image>().sprite = image;
+            StartCoroutine("mostrarFrase");
+            animator.SetBool("talk",true);
+            if (player.transform.position.x > gameObject.transform.position.x)
+            {
+                gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else
+            {
+                gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
     }
@@ -98,7 +122,7 @@ public class NPCController : MonoBehaviour
 
             while (!seguir)
             {
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Return))
                 {
                     seguir = true;
                 }
@@ -115,6 +139,10 @@ public class NPCController : MonoBehaviour
         hablando = false;
         panel.SetActive(false);
         animator.SetBool("talk",false);
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].GetComponent<PlayerController>().mov = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -123,7 +151,6 @@ public class NPCController : MonoBehaviour
         {
             hablar = true;
             botonInteractuarController.visible();
-            player = other.gameObject;
         }
     }
 
@@ -134,12 +161,22 @@ public class NPCController : MonoBehaviour
             hablar = false;
             botonInteractuarController.visible();
             currentFrase = "";
-            dejarHablar();
         }
     }
     
     public void cambiarIdioma() {
         idioma = opcionesContorller.getIdioma();
         frases = dialogeController.getTextoDialogos(dialogos, hablante, idioma);
+    }
+
+    public void inter(GameObject p)
+    {
+        player = p.transform.parent.gameObject;
+        empezarHablar();
+        
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].GetComponent<PlayerController>().mov = false;
+        }
     }
 }

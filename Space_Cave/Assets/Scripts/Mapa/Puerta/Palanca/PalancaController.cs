@@ -16,22 +16,6 @@ public class PalancaController : MonoBehaviour
     void Update()
     {
 
-        if (accion == true)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                abierto = !abierto;
-                if (abierto == true)
-                {
-                    puerta.SetTrigger("abrir");
-                }
-                else
-                {
-                    puerta.SetTrigger("cerrar");
-                }
-            }
-        }
-        
         if (abierto == false)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = palancaCerrada;
@@ -55,6 +39,22 @@ public class PalancaController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             accion = false;
+        }
+    }
+
+    public void inter()
+    {
+        if (accion == true)
+        {
+            abierto = !abierto;
+            if (abierto == true)
+            {
+                puerta.SetTrigger("abrir");
+            }
+            else
+            {
+                puerta.SetTrigger("cerrar");
+            }
         }
     }
 }

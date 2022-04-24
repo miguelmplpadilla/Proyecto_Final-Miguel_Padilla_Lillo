@@ -13,6 +13,8 @@ public class Puzzle1Controller : MonoBehaviour
     
     private bool[] listos = new bool[4];
     private bool[] comprobacion = {true, true, true, true };
+    
+    private GameObject[] players;
 
     private void Awake()
     {
@@ -20,6 +22,8 @@ public class Puzzle1Controller : MonoBehaviour
         desplazadorControllers[1] = objectDesplazador[1].GetComponent<DesplazadorController>();
         desplazadorControllers[2] = objectDesplazador[2].GetComponent<DesplazadorController>();
         desplazadorControllers[3] = objectDesplazador[3].GetComponent<DesplazadorController>();
+        
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 
     void Update()
@@ -33,6 +37,10 @@ public class Puzzle1Controller : MonoBehaviour
         {
             puerta.SetTrigger("abrir");
             gameObject.transform.parent.gameObject.SetActive(false);
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i].GetComponent<PlayerController>().mov = true;
+            }
             Destroy(gameObject);
         }
         

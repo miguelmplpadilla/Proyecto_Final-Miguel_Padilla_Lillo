@@ -11,23 +11,33 @@ public class GunController : MonoBehaviour
     public GameObject player;
     public GameObject shootPoint;
     public GameObject bullet;
-    private Rigidbody2D playerRigidbody;
     public float bulletSpeed = 6;
     public bool gun = false;
     public bool shooting = false;
     public int bulletNum = 5;
     public GameObject bullets;
 
+    public KeyCode disparar = KeyCode.Space;
+    public KeyCode taser = KeyCode.Alpha1;
+    public KeyCode pistola = KeyCode.Alpha2;
+    
+    public int numeroJugador = 1;
+
     private void Awake()
     {
-        playerRigidbody = GetComponent<Rigidbody2D>();
+        if (numeroJugador == 2)
+        {
+            disparar = KeyCode.RightControl;
+            taser = KeyCode.Alpha9;
+            pistola = KeyCode.Alpha0;
+        }
     }
 
     void Update() {
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+        if (Input.GetKeyDown(taser)) {
             gun = false;
-        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+        } else if (Input.GetKeyDown(pistola)) {
             gun = true;
         }
         
@@ -35,7 +45,7 @@ public class GunController : MonoBehaviour
 
         if (gun == true) {
 
-            if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            if (Input.GetKeyDown(disparar)) {
                 if (bulletNum > 0)
                 {
                     if (shooting == false) {

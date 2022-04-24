@@ -11,25 +11,11 @@ public class EnchufeController : MonoBehaviour
     
     private bool accion = false;
     private bool enchufado = false;
-    private GameObject player;
-    
-    void Update()
-    {
-        if (accion == true && enchufado == false)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                bobina.GetComponent<BobinaController>().setEnchufado(true, player);
-                enchufado = true;
-            }
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
         {
-            player = col.gameObject;
             accion = true;
         }
     }
@@ -39,6 +25,15 @@ public class EnchufeController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             accion = false;
+        }
+    }
+    
+    public void inter(GameObject p)
+    {
+        if (accion == true && enchufado == false)
+        {
+            bobina.GetComponent<BobinaController>().setEnchufado(true, p);
+            enchufado = true;
         }
     }
 }

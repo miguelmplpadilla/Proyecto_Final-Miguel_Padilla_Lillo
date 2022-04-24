@@ -7,7 +7,7 @@ using UnityEngine;
 public class BobinaController : MonoBehaviour {
 
     public GameObject ultimoCable;
-    public GameObject mano;
+    public GameObject mano = null;
     public GameObject enchufe;
     public GameObject puerta;
     public GameObject linea;
@@ -19,15 +19,7 @@ public class BobinaController : MonoBehaviour {
     
     void Update()
     {
-        if (accion == true && enchufado == false) {
-            if (Input.GetKeyDown(KeyCode.F)) {
-                ultimoCable.GetComponent<HingeJoint2D>().connectedAnchor = mano.transform.position;
-                ultimoCable.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-                linea.SetActive(true);
-                posicion = true;
-            }
-        }
-        
+
         if (posicion == true) {
             if (enchufado == false)
             {
@@ -43,11 +35,14 @@ public class BobinaController : MonoBehaviour {
             ultimoCable.transform.position = transform.position;
         }
 
-        if (!mano.activeInHierarchy)
+        if ( mano != null)
         {
-            enchufado = false;
-            posicion = false;
-            linea.SetActive(false);
+            if (!mano.activeInHierarchy)
+            {
+                enchufado = false;
+                posicion = false;
+                linea.SetActive(false);
+            }
         }
     }
 
@@ -75,5 +70,17 @@ public class BobinaController : MonoBehaviour {
         camara.Follow = puerta.transform;
         yield return new WaitForSeconds(1f);
         camara.Follow = player.transform;
+    }
+
+    public void inter(GameObject p)
+    {
+        mano = p.transform.parent.GetChild(3).gameObject;
+        
+        if (accion == true && enchufado == false) {
+            ultimoCable.GetComponent<HingeJoint2D>().connectedAnchor = mano.transform.position;
+            ultimoCable.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            linea.SetActive(true);
+            posicion = true;
+        }
     }
 }

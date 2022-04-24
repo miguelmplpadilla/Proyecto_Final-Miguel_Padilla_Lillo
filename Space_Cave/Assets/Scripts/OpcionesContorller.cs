@@ -12,6 +12,8 @@ public class OpcionesContorller : MonoBehaviour {
     public Animator animatorPanelOpciones;
     private SaveGame saveGame;
 
+    public List<GameObject> players;
+
     private void Awake() {
         saveGame = GetComponent<SaveGame>();
         idioma = PlayerPrefs.GetString("idioma");

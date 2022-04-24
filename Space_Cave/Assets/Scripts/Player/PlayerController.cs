@@ -27,9 +27,29 @@ public class PlayerController : MonoBehaviour {
 
     public Rigidbody2D _rigidbody;
 
+    public int numeroJugador = 1;
+    
+    //Controles
+    public KeyCode arriba = KeyCode.W;
+    public KeyCode abajo = KeyCode.S;
+    public KeyCode izquierda = KeyCode.A;
+    public KeyCode derecha = KeyCode.D;
+
+    public KeyCode deslizar = KeyCode.LeftShift;
+
     private void Awake() {
         speed = defaultSpeed;
         gunController = GetComponent<GunController>();
+
+        if (numeroJugador == 2)
+        {
+            arriba = KeyCode.UpArrow;
+            abajo = KeyCode.DownArrow;
+            izquierda = KeyCode.LeftArrow;
+            derecha = KeyCode.RightArrow;
+
+            deslizar = KeyCode.RightShift;
+        }
     }
 
     private void Start()
@@ -66,10 +86,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     void movimiento() {
-        bool up = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
-        bool down = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
-        bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
-        bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+        bool up = Input.GetKey(arriba);
+        bool down = Input.GetKey(abajo);
+        bool right = Input.GetKey(derecha);
+        bool left = Input.GetKey(izquierda);
         
         if (up) {
             input.y = 1;
@@ -91,7 +111,7 @@ public class PlayerController : MonoBehaviour {
         
         if (up || down || right || left) {
             animator.SetBool("run",true);
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(deslizar))
             {
                 animator.SetTrigger("dash");
                 speed = dashSpeed;

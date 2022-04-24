@@ -10,17 +10,12 @@ public class OrdenadorController : MonoBehaviour
     private bool activo = false;
     private bool enPuzle = false;
     public GameObject panelPuzle;
-    
-    void Update()
+
+    private GameObject[] players;
+
+    private void Awake()
     {
-        if (activo == true && enPuzle == false)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                enPuzle = true;
-                panelPuzle.SetActive(true);
-            }
-        }
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -36,6 +31,20 @@ public class OrdenadorController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             activo = false;
+        }
+    }
+
+    public void inter()
+    {
+        if (activo == true && enPuzle == false)
+        {
+            enPuzle = true;
+            panelPuzle.SetActive(true);
+        }
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].GetComponent<PlayerController>().mov = false;
         }
     }
 }
