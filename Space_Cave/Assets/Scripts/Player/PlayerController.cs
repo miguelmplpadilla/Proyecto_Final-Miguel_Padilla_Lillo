@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -43,6 +44,11 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            hit(5);
+        }
 
         if (stop == false && mov == true) {
             flip();
@@ -117,6 +123,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    IEnumerator resetearNivel()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     IEnumerator invulnerabilidad() {
         invulnerable = true;
         yield return new WaitForSeconds(1.5f);
@@ -136,7 +148,11 @@ public class PlayerController : MonoBehaviour {
         transform.localScale = localScale;
     }
 
-    void desactivarPlayer() {
-        gameObject.SetActive(false);
+    void desactivarPlayer()
+    {
+        mov = false;
+        animator.enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        StartCoroutine("resetearNivel");
     }
 }
