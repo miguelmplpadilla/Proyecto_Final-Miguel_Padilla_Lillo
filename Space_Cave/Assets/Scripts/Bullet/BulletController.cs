@@ -7,6 +7,8 @@ public class BulletController : MonoBehaviour
 {
     
     public int damage = 1;
+
+    public GameObject padre;
     
     private void Start()
     {
@@ -23,7 +25,7 @@ public class BulletController : MonoBehaviour
     {
         if (other.CompareTag("HurtBoxEnemy")) {
             EnemyHurt hurt = other.GetComponentInParent<EnemyHurt>();
-            hurt.Hit(damage);
+            hurt.Hit(damage, padre);
             Destroy(gameObject);
         }
     }

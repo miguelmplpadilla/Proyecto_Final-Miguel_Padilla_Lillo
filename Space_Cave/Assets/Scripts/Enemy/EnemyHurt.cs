@@ -13,11 +13,17 @@ public class EnemyHurt : MonoBehaviour
         atackController = GetComponentInParent<AtackController>();
     }
 
-    public void Hit(int damage) {
+    public void Hit(int damage, GameObject player) {
         life -= damage;
         atackController.nivelDeteccion = 100f;
         if (life <= 0) {
-            Destroy(gameObject);
+            gameObject.GetComponent<Animator>().SetTrigger("morir");
+            atackController.mov = false;
         }
+        atackController.setPlayer(player);
+    }
+
+    public void destroyEnemy() {
+        Destroy(gameObject);
     }
 }

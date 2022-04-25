@@ -21,6 +21,7 @@ public class EnemyBulletController : MonoBehaviour
         if (col.CompareTag("HurBoxPlayer"))
         {
             col.gameObject.GetComponentInParent<PlayerController>().hit(1);
+            Destroy(gameObject);
         }
     }
 }

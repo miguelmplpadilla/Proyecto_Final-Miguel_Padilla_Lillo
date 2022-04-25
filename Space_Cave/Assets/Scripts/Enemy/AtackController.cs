@@ -19,60 +19,70 @@ public class AtackController : MonoBehaviour {
     public GameObject bullet;
     public float bulletSpeed = 3;
 
+    public bool mov = true;
+
     private void Update()
     {
-        if (nivelDeteccion >= 100)
-        {
-            detectado = true;
-        } else if (nivelDeteccion <= 0)
-        {
-            detectado = false;
-        }
-
-        if (nivelDeteccion > 0 && !detectado) {
-            detectionAlert.GetComponent<SpriteRenderer>().color = new Color(250f,215f,0,1f);
-        } else if (detectado == true) {
-            detectionAlert.GetComponent<SpriteRenderer>().color = new Color(255f,0,0,1f);
-        } else if (nivelDeteccion <= 0 && detectado == false) {
-            detectionAlert.GetComponent<SpriteRenderer>().color = new Color(250f,215f,0,0);
-        }
-
-        if (nivelDeteccion > 50 || detectado) {
-            if (player != null)
+        if (mov == true) {
+            if (nivelDeteccion >= 100)
             {
-                if (player.transform.position.x > gameObject.transform.position.x)
+                detectado = true;
+            } else if (nivelDeteccion <= 0)
+            {
+                detectado = false;
+            }
+
+            if (nivelDeteccion > 0 && !detectado) {
+                detectionAlert.GetComponent<SpriteRenderer>().color = new Color(250f,215f,0,1f);
+            } else if (detectado == true) {
+                detectionAlert.GetComponent<SpriteRenderer>().color = new Color(255f,0,0,1f);
+            } else if (nivelDeteccion <= 0 && detectado == false) {
+                detectionAlert.GetComponent<SpriteRenderer>().color = new Color(250f,215f,0,0);
+            }
+
+            if (nivelDeteccion > 50 || detectado) {
+                if (player != null)
                 {
-                    gameObject.transform.localScale = new Vector3(1f,1f,1f);
-                }
-                else
-                {
-                    gameObject.transform.localScale = new Vector3(-1f,1f,1f);
-                }
-                
-                if (detectado)
-                {
-                    distancia = Vector3.Distance(gameObject.transform.position, player.transform.position);
-                    if (distancia > 0.6f)
+                    if (player.transform.position.x > gameObject.transform.position.x)
                     {
-                        animator.SetBool("shoot", false);
-                        animator.SetBool("run", true);
-                        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        gameObject.transform.localScale = new Vector3(1f,1f,1f);
                     }
                     else
                     {
-                        animator.SetBool("run", false);
-                        animator.SetBool("shoot", true);
+                        gameObject.transform.localScale = new Vector3(-1f,1f,1f);
                     }
                     
-                    Vector2 posicionY = new Vector2(transform.position.x,player.transform.position.y);
-                    transform.position = Vector2.MoveTowards(transform.position, posicionY, speedY * Time.deltaTime);
+                    if (detectado)
+                    {
+                        distancia = Vector3.Distance(gameObject.transform.position, player.transform.position);
+                        if (distancia > 0.6f)
+                        {
+                            animator.SetBool("shoot", false);
+                            animator.SetBool("run", true);
+                            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            animator.SetBool("run", false);
+                            animator.SetBool("shoot", true);
+                        }
+                        
+                        Vector2 posicionY = new Vector2(transform.position.x,player.transform.position.y);
+                        transform.position = Vector2.MoveTowards(transform.position, posicionY, speedY * Time.deltaTime);
+                    }
                 }
             }
+            else
+            {
+                animator.SetBool("shoot", false);
+            }
         }
-        else
-        {
+        else {
             animator.SetBool("shoot", false);
+            animator.SetBool("run", false);
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
+        
         
 
         //float tamano = (nivelDeteccion * 0.2f) / 100;

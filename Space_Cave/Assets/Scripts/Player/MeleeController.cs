@@ -14,7 +14,7 @@ public class MeleeController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 if (otro.CompareTag("HurtBoxEnemy")) {
                     EnemyHurt hurt = otro.GetComponentInParent<EnemyHurt>();
-                    hurt.Hit(damage);
+                    hurt.Hit(damage, gameObject);
                 }
             }
         }

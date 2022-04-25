@@ -70,6 +70,7 @@ public class GunController : MonoBehaviour
         Vector3 start = shootPoint.transform.position;
         
         GameObject bullet = (GameObject) Instantiate(this.bullet, start, transform.rotation);
+        bullet.GetComponent<BulletController>().padre = gameObject;
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
 
         if (transform.localScale.x > 0)
