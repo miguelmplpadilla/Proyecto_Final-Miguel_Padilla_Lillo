@@ -147,5 +147,15 @@ public class AtackController : MonoBehaviour {
 
         bulletRigidbody.transform.localScale = transform.localScale;
     }
+    
+    public void setNivelDeteccion(float nivel)
+    {
+        nivelDeteccion = nivel;
+    }
+
+    public void setMov(bool m)
+    {
+        mov = m;
+    }
 
 }

@@ -6,26 +6,24 @@ using UnityEngine;
 public class EnemyHurt : MonoBehaviour
 {
     public int life = 2;
-    private AtackController atackController;
     private Blink blink;
 
     private void Awake()
     {
-        atackController = GetComponentInParent<AtackController>();
         blink = GetComponent<Blink>();
     }
 
     public void Hit(int damage, GameObject player) {
         life -= damage;
-        atackController.nivelDeteccion = 100f;
+        gameObject.SendMessage("setNivelDeteccion",100);
         if (life <= 0) {
             gameObject.GetComponent<Animator>().SetTrigger("morir");
-            atackController.mov = false;
+            gameObject.SendMessage("setMov",false);
         }
         else {
             blink.takeDamage(1);
         }
-        atackController.setPlayer(player);
+        gameObject.SendMessage("setPlayer",player);
     }
 
     public void destroyEnemy() {

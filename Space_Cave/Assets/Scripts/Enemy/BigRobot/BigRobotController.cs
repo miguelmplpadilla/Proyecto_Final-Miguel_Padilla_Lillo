@@ -18,7 +18,7 @@ public class BigRobotController : MonoBehaviour
     public float bulletSpeed = 3;
 
     public bool mov = true;
-    private bool disparando = false;
+    public bool disparando = false;
 
     private void Update()
     {
@@ -31,6 +31,7 @@ public class BigRobotController : MonoBehaviour
                 }
                 else if (nivelDeteccion <= 0) {
                     detectado = false;
+                    animator.SetBool("run", false);
                 }
 
                 if (nivelDeteccion > 0 && !detectado) {
@@ -85,8 +86,17 @@ public class BigRobotController : MonoBehaviour
 
         }
         else {
+            if (player.transform.position.x > gameObject.transform.position.x) {
+                gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else {
+                gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
             animator.SetBool("shoot", true);
+            animator.SetBool("run", false);
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
+        
         //float tamano = (nivelDeteccion * 0.2f) / 100;
         //detectionBar.transform.localScale = new Vector3(tamano,0.02f,1f );
     }
@@ -127,21 +137,33 @@ public class BigRobotController : MonoBehaviour
         start = shootingPoint.transform.position;
         
         GameObject bullet = (GameObject) Instantiate(this.bullet, start, transform.rotation);
+        bullet.GetComponent<EnemyBulletController>().bulletSpeed = bulletSpeed;
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
 
-        if (transform.localScale.x > 0)
+        /*if (transform.localScale.x > 0)
         {
             bulletRigidbody.velocity = new Vector2(1f * bulletSpeed, 0 * bulletSpeed);
         }
         else
         {
             bulletRigidbody.velocity = new Vector2(-1f * bulletSpeed, 0 * bulletSpeed);
-        }
+        }*/
 
         bulletRigidbody.transform.localScale = transform.localScale;
     }
 
     public void stopShooting() {
         disparando = false;
+        animator.SetBool("shoot", false);
+    }
+    
+    public void setNivelDeteccion(float nivel)
+    {
+        nivelDeteccion = nivel;
+    }
+
+    public void setMov(bool m)
+    {
+        mov = m;
     }
 }
