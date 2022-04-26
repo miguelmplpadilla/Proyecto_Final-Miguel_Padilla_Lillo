@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 826049579, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
+      propertyPath: numeroJugador
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8500278253715022371, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: m_Name
       value: SegundoPlayer
@@ -54,6 +58,14 @@ PrefabInstance:
     - target: {fileID: 8500278253715022377, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500278253715022379, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
+      propertyPath: numeroJugador
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500278253715022382, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
+      propertyPath: numeroJugador
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}

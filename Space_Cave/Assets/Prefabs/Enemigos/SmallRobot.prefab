@@ -539,6 +539,7 @@ GameObject:
   - component: {fileID: 2734688211213941124}
   - component: {fileID: 2734688211213941125}
   - component: {fileID: 2734688211213941126}
+  - component: {fileID: 693349617006748229}
   - component: {fileID: 2734688211213941123}
   - component: {fileID: 2734688211213941121}
   - component: {fileID: 2734688211213941122}
@@ -638,6 +639,20 @@ CircleCollider2D:
   m_Offset: {x: 0.012752876, y: 0.038753018}
   serializedVersion: 2
   m_Radius: 0.07721324
+--- !u!114 &693349617006748229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734688211213941127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39556c36faa04982ad8f1b0179e944f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  original: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  blink: {fileID: 2100000, guid: 49512826dd4cb4346a4735f3c0e5363e, type: 2}
 --- !u!114 &2734688211213941123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +690,7 @@ MonoBehaviour:
   shootingPoint2: {fileID: 2734688211395959527}
   bullet: {fileID: 4804565282509878687, guid: 7991061e673f4654eba59b3b6a691ba6, type: 3}
   bulletSpeed: 0.7
+  mov: 1
 --- !u!95 &2734688211213941122
 Animator:
   serializedVersion: 4
