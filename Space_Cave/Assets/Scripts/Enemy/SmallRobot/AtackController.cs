@@ -124,12 +124,10 @@ public class AtackController : MonoBehaviour {
         Vector3 start = new Vector3(0,0,0);
         if (point == 1)
         {
-            Debug.Log("Disparar 1");
             start = shootingPoint1.transform.position;
         }
         else
         {
-            Debug.Log("Disparar 2");
             start = shootingPoint2.transform.position;
         }
         
