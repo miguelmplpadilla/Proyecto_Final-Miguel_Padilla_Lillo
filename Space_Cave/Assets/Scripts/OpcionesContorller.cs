@@ -12,6 +12,8 @@ public class OpcionesContorller : MonoBehaviour {
     public Animator animatorPanelOpciones;
     private SaveGame saveGame;
 
+    private bool abierto = false;
+
     public List<GameObject> players;
 
     private void Awake() {
@@ -23,7 +25,15 @@ public class OpcionesContorller : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            abrirOpciones();
+            if (!abierto)
+            {
+                abrirOpciones();
+            }
+            else
+            {
+                cerrarOpciones();
+            }
+            
         }
     }
     
