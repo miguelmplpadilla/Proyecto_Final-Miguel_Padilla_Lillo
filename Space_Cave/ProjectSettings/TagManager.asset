@@ -13,6 +13,8 @@ TagManager:
   - NPC
   - Destino
   - Interactuar
+  - bala
+  - colisionar
   layers:
   - Default
   - TransparentFX

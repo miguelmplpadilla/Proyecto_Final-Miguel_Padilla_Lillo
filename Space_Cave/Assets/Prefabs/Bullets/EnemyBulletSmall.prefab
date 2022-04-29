@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4804565282509878684}
   m_Layer: 0
   m_Name: EnemyBulletSmall
-  m_TagString: Untagged
+  m_TagString: bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deec90881099b5f4088da1c5cba06ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 1
+  seguir: 1
 --- !u!58 &4804565282509878685
 CircleCollider2D:
   m_ObjectHideFlags: 0

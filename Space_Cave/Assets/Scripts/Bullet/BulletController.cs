@@ -28,5 +28,10 @@ public class BulletController : MonoBehaviour
             hurt.Hit(damage, padre);
             Destroy(gameObject);
         }
+
+        if (other.CompareTag("pared"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
