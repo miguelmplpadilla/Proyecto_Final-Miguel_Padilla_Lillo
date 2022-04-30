@@ -28,10 +28,12 @@ public class OpcionesContorller : MonoBehaviour {
             if (!abierto)
             {
                 abrirOpciones();
+                abierto = true;
             }
             else
             {
                 cerrarOpciones();
+                abierto = false;
             }
             
         }

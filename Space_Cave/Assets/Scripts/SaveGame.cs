@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveGame : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetFloat("playerX", player.gameObject.transform.position.x);
         PlayerPrefs.SetFloat("playerY", player.gameObject.transform.position.y);
         PlayerPrefs.SetString("idioma", opcionesController.getIdioma());
+        PlayerPrefs.SetString("nivel",SceneManager.GetActiveScene().name);
         PlayerPrefs.Save();
     }
 }

@@ -15,6 +15,7 @@ TagManager:
   - Interactuar
   - bala
   - colisionar
+  - pared
   layers:
   - Default
   - TransparentFX
