@@ -17,6 +17,12 @@ public class BobinaController : MonoBehaviour {
     public bool accion = false;
     private bool posicion = false;
     
+    private BotonInteractuarController botonInteractuarController;
+    
+    private void Awake() {
+        botonInteractuarController = gameObject.transform.GetChild(2).GetComponent<BotonInteractuarController>();
+    }
+    
     void Update()
     {
 
@@ -49,12 +55,14 @@ public class BobinaController : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("Player")) {
             accion = true;
+            botonInteractuarController.visible();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.CompareTag("Player")) {
             accion = false;
+            botonInteractuarController.visible();
         }
     }
 
@@ -75,6 +83,7 @@ public class BobinaController : MonoBehaviour {
     public void inter(GameObject p)
     {
         mano = p.transform.parent.GetChild(3).gameObject;
+        botonInteractuarController.gameObject.SetActive(false);
         
         if (accion == true && enchufado == false) {
             ultimoCable.GetComponent<HingeJoint2D>().connectedAnchor = mano.transform.position;

@@ -12,7 +12,12 @@ public class PalancaController : MonoBehaviour
     public Animator puerta;
     public Sprite palancaAbierta;
     public Sprite palancaCerrada;
-    
+    private BotonInteractuarController botonInteractuarController;
+
+    private void Awake() {
+        botonInteractuarController = GetComponentInChildren<BotonInteractuarController>();
+    }
+
     void Update()
     {
 
@@ -31,6 +36,7 @@ public class PalancaController : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             accion = true;
+            botonInteractuarController.visible();
         }
     }
 
@@ -39,6 +45,7 @@ public class PalancaController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             accion = false;
+            botonInteractuarController.visible();
         }
     }
 

@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour {
                 gameObject.transform.position =
                     new Vector2(PlayerPrefs.GetFloat("playerX"), PlayerPrefs.GetFloat("playerY"));
                 string nivel = PlayerPrefs.GetString("nivel");
-                if (!nivel.Equals(SceneManager.GetActiveScene().name))
+                if (!nivel.Equals(SceneManager.GetActiveScene().name) && !nivel.Equals(""))
                 {
                     SceneManager.LoadScene(nivel);
                 }

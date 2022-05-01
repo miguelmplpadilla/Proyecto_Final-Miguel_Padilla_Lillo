@@ -11,12 +11,19 @@ public class EnchufeController : MonoBehaviour
     
     private bool accion = false;
     private bool enchufado = false;
+    
+    private BotonInteractuarController botonInteractuarController;
+    
+    private void Awake() {
+        botonInteractuarController = gameObject.transform.parent.GetChild(3).GetComponent<BotonInteractuarController>();
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
         {
             accion = true;
+            botonInteractuarController.visible();
         }
     }
 
@@ -25,6 +32,7 @@ public class EnchufeController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             accion = false;
+            botonInteractuarController.visible();
         }
     }
     
@@ -32,6 +40,7 @@ public class EnchufeController : MonoBehaviour
     {
         if (accion == true && enchufado == false)
         {
+            botonInteractuarController.gameObject.SetActive(false);
             bobina.GetComponent<BobinaController>().setEnchufado(true, p);
             enchufado = true;
         }

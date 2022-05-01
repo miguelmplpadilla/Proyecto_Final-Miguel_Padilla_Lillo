@@ -10,12 +10,14 @@ public class SaveGame : MonoBehaviour
     private PlayerController playerController;
     private GunController gunController;
     private OpcionesContorller opcionesController;
+    private PuntosController puntosController;
 
     private void Awake()
     {
         playerController = player.gameObject.GetComponent<PlayerController>();
         gunController = player.gameObject.GetComponent<GunController>();
         opcionesController = GetComponent<OpcionesContorller>();
+        puntosController = GameObject.Find("PanelPuntuacion").GetComponent<PuntosController>();
     }
 
     public void guardarPartida()
@@ -26,6 +28,7 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetFloat("playerY", player.gameObject.transform.position.y);
         PlayerPrefs.SetString("idioma", opcionesController.getIdioma());
         PlayerPrefs.SetString("nivel",SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetInt("puntos",puntosController.getPuntos());
         PlayerPrefs.Save();
     }
 }

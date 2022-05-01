@@ -10,12 +10,14 @@ public class OrdenadorController : MonoBehaviour
     private bool activo = false;
     private bool enPuzle = false;
     public GameObject panelPuzle;
+    private BotonInteractuarController botonInteractuarController;
 
     private GameObject[] players;
 
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
+        botonInteractuarController = GetComponentInChildren<BotonInteractuarController>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -23,6 +25,7 @@ public class OrdenadorController : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             activo = true;
+            botonInteractuarController.visible();
         }
     }
 
@@ -31,6 +34,7 @@ public class OrdenadorController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             activo = false;
+            botonInteractuarController.visible();
         }
     }
 
@@ -40,6 +44,7 @@ public class OrdenadorController : MonoBehaviour
         {
             enPuzle = true;
             panelPuzle.SetActive(true);
+            botonInteractuarController.gameObject.SetActive(false);
         }
 
         for (int i = 0; i < players.Length; i++)
