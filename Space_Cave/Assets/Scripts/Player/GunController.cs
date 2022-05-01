@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GunController : MonoBehaviour
 {
@@ -18,34 +19,41 @@ public class GunController : MonoBehaviour
     public GameObject bullets;
 
     public KeyCode disparar = KeyCode.Space;
-    public KeyCode taser = KeyCode.Alpha1;
-    public KeyCode pistola = KeyCode.Alpha2;
+    public KeyCode recargar = KeyCode.R;
     
     public int numeroJugador = 1;
+
+    private bool recargando = false;
 
     private void Awake()
     {
         if (numeroJugador == 2)
         {
             disparar = KeyCode.RightControl;
-            taser = KeyCode.Alpha9;
-            pistola = KeyCode.Alpha0;
+            recargar = KeyCode.P;
+        }
+    }
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("gun"))
+        {
+            if (!SceneManager.GetActiveScene().name.Equals("SampleScene"))
+            {
+                if (PlayerPrefs.GetInt("gun") == 1)
+                {
+                    gun = true;
+                }
+            }
         }
     }
 
     void Update() {
-
-        if (Input.GetKeyDown(taser)) {
-            gun = false;
-        } else if (Input.GetKeyDown(pistola)) {
-            gun = true;
-        }
-        
         animator.SetBool("gun",gun);
 
         if (gun == true) {
 
-            if (Input.GetKeyDown(disparar)) {
+            if (Input.GetButtonDown("Fire")) {
                 if (bulletNum > 0)
                 {
                     if (shooting == false) {
@@ -53,11 +61,41 @@ public class GunController : MonoBehaviour
                     }
                 }
             }
+
+            if (!recargando)
+            {
+                if (Input.GetButtonDown("Reload"))
+                {
+                    recargando = true;
+                    StartCoroutine("reload");
+                }
+            }
             
+            /*if (bulletNum <= 0 && !recargando)
+            {
+                recargando = true;
+                StartCoroutine("reload");
+            }*/
+
         }
 
-        bullets.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(15*bulletNum, 20);
-        
+        if (!recargando)
+        {
+            bullets.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(15*bulletNum, 20);
+        }
+
+    }
+
+
+    IEnumerator reload()
+    {
+        for (int i = bulletNum; i < 5; i++)
+        {
+            bullets.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(15*(i+1), 20);
+            yield return new WaitForSeconds(0.2f);
+        }
+        bulletNum = 5;
+        recargando = false;
     }
 
     void shoot()
@@ -84,6 +122,12 @@ public class GunController : MonoBehaviour
 
         bulletRigidbody.transform.localScale = transform.localScale;
         
+    }
+
+    public void setGur()
+    {
+        gun = true;
+        PlayerPrefs.SetInt("gun",1);
     }
     
 }

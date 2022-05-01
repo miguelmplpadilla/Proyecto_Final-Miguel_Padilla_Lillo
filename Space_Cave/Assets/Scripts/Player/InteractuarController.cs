@@ -25,7 +25,7 @@ public class InteractuarController : MonoBehaviour
     {
         if (hablar == true)
         {
-            if (Input.GetKeyDown(interactuar))
+            if (Input.GetButtonDown("Interactuar"))
             {
                 objectinteractuar.SendMessage("inter", gameObject);
             }

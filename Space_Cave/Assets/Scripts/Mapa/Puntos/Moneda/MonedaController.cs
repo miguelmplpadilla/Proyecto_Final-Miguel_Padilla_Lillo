@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonedaController : MonoBehaviour
 {
-    public int puntos = 10;
+    private int puntos = 10;
     private PuntosController puntosController;
 
     private void Awake() {
@@ -16,5 +16,10 @@ public class MonedaController : MonoBehaviour
             puntosController.setPuntos(puntos);
             Destroy(gameObject);
         }
+    }
+
+    public void setPuntos(int p)
+    {
+        puntos = p;
     }
 }

@@ -7,6 +7,8 @@ public class EnemyHurt : MonoBehaviour
 {
     public int life = 2;
     private Blink blink;
+    public GameObject moneda;
+    public int puntos = 25;
 
     private void Awake()
     {
@@ -26,7 +28,14 @@ public class EnemyHurt : MonoBehaviour
         gameObject.SendMessage("setPlayer",player);
     }
 
-    public void destroyEnemy() {
+    public void destroyEnemy()
+    {
+        GameObject monedaPrefab = (GameObject) Instantiate(moneda);
+        
+        monedaPrefab.SendMessageUpwards("setPuntos", puntos);
+
+        monedaPrefab.transform.position = transform.position;
+        
         Destroy(gameObject);
     }
 }

@@ -341,10 +341,10 @@ TextureImporter:
       name: basic life bars a icons _10
       rect:
         serializedVersion: 2
-        x: 50
-        y: 142
-        width: 11
-        height: 16
+        x: 48
+        y: 140
+        width: 15
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -666,6 +666,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 5
+  moneda: {fileID: 3649853541347263908, guid: 6004dc30be7eeb14faa04d33c5c987a5, type: 3}
+  puntos: 15
 --- !u!114 &2734688211213941121
 MonoBehaviour:
   m_ObjectHideFlags: 0

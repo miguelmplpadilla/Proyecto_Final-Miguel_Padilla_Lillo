@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909c4b9509d29a445851e40a43e615b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teclado: {fileID: -2117188880, guid: 323854c12de526c4aacdf7e8793ac2ad, type: 3}
+  mando: {fileID: 1704577507, guid: 0199ed545bd914d448090517b463f9cd, type: 3}
 --- !u!212 &3713466872431078251
 SpriteRenderer:
   m_ObjectHideFlags: 0

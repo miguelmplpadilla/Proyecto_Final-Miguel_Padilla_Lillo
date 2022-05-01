@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     public float defaultSpeed = 1f;
     public int life = 8;
     private float speed = 1f;
-    private float dashSpeed = 2f;
+    public float dashSpeed = 2f;
     private int scale = 1;
     public Animator animator;
     public bool stop = false;
@@ -74,13 +74,14 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             hit(5);
         }
+        
 
         if (stop == false && mov == true) {
-            flip();
+            //flip();
         
             movimiento();
         }
@@ -95,12 +96,30 @@ public class PlayerController : MonoBehaviour {
     }
 
     void movimiento() {
-        bool up = Input.GetKey(arriba);
+        /*bool up = Input.GetKey(arriba);
         bool down = Input.GetKey(abajo);
         bool right = Input.GetKey(derecha);
-        bool left = Input.GetKey(izquierda);
+        bool left = Input.GetKey(izquierda);*/
         
-        if (up) {
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        Vector2 movement = new Vector2(horizontalInput*speed, verticalInput*speed);
+
+        _rigidbody.velocity = movement;
+            //transform.TransformDirection(new Vector3(horizontalVelocity, verticalVelocity, 0));
+        
+        Vector3 localScale = transform.localScale;
+        
+        if (horizontalInput > 0) {
+            localScale.x = scale;
+        }
+        else if (horizontalInput < 0) {
+            localScale.x = -scale;
+        }
+        
+        transform.localScale = localScale;
+        
+        /*if (up) {
             input.y = 1;
         } else if (down) {
             input.y = -1;
@@ -116,11 +135,16 @@ public class PlayerController : MonoBehaviour {
         }
         else {
             input.x = 0;
+        }*/
+        
+        if (dashing == false) {
+            //_rigidbody.velocity = new Vector2(input.normalized.x * speed, input.normalized.y * speed);
+            speed = defaultSpeed;
         }
         
-        if (up || down || right || left) {
+        if (verticalInput > 0 || horizontalInput > 0 || verticalInput < 0 || horizontalInput < 0) {
             animator.SetBool("run",true);
-            if (Input.GetKeyDown(deslizar))
+            if (Input.GetButtonDown("Dash"))
             {
                 animator.SetTrigger("dash");
                 speed = dashSpeed;
@@ -129,11 +153,6 @@ public class PlayerController : MonoBehaviour {
         else
         {
             animator.SetBool("run",false);
-        }
-        
-        if (dashing == false) {
-            _rigidbody.velocity = new Vector2(input.normalized.x * speed, input.normalized.y * speed);
-            speed = defaultSpeed;
         }
     }
 
