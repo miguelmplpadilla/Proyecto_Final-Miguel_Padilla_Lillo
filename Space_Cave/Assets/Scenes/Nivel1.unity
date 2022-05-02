@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oscurecedor
       objectReference: {fileID: 0}
+    - target: {fileID: 4535500465626573052, guid: e81992bc55f8d0f42a2b78ed0a8f4e5c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4535500465626573053, guid: e81992bc55f8d0f42a2b78ed0a8f4e5c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -14002,6 +14006,10 @@ PrefabInstance:
     - target: {fileID: 4535500465626573040, guid: e81992bc55f8d0f42a2b78ed0a8f4e5c, type: 3}
       propertyPath: m_Name
       value: Oscurecedor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535500465626573052, guid: e81992bc55f8d0f42a2b78ed0a8f4e5c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4535500465626573053, guid: e81992bc55f8d0f42a2b78ed0a8f4e5c, type: 3}
       propertyPath: m_RootOrder
