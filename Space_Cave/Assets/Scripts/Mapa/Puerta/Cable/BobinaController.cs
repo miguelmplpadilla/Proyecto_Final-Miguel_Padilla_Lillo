@@ -38,7 +38,9 @@ public class BobinaController : MonoBehaviour {
         }
         else
         {
-            ultimoCable.transform.position = transform.position;
+            if (ultimoCable != null) {
+                ultimoCable.transform.position = transform.position;
+            }
         }
 
         if ( mano != null)

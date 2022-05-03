@@ -6,7 +6,7 @@ using UnityEngine;
 public class DetectorEnemigosController : MonoBehaviour
 {
     public GameObject[] enemigos;
-    public Animator puerta;
+    public Animator[] puertas;
     private bool abierto = false;
 
 
@@ -25,7 +25,9 @@ public class DetectorEnemigosController : MonoBehaviour
 
             if (j == enemigos.Length)
             {
-                puerta.SetTrigger("abrir");
+                for (int i = 0; i < puertas.Length; i++) {
+                    puertas[i].SetTrigger("abrir");
+                }
             }
         }
     }

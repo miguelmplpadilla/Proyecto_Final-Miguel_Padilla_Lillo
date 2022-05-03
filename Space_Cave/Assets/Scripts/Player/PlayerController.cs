@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("vida"))
+        /*if (PlayerPrefs.HasKey("vida"))
         {
             if (!SceneManager.GetActiveScene().name.Equals("SampleScene"))
             {
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour {
                     SceneManager.LoadScene(nivel);
                 }
             }
-        }
+        }*/
     }
 
     void Update()
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour {
         float verticalInput = Input.GetAxisRaw("Vertical");
         Vector2 movement = new Vector2(horizontalInput*speed, verticalInput*speed);
 
-        _rigidbody.velocity = movement;
+        _rigidbody.velocity = movement.normalized;
             //transform.TransformDirection(new Vector3(horizontalVelocity, verticalVelocity, 0));
         
         Vector3 localScale = transform.localScale;
