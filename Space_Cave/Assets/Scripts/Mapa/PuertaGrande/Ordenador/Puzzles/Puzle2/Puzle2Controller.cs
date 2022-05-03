@@ -8,7 +8,7 @@ public class Puzle2Controller : MonoBehaviour
 {
     public RotarCalibrador[] calibradores;
     public int final = 0;
-    public Animator puerta;
+    public Animator[] puertas;
     public PlayerController playerController;
 
     private void Start()
@@ -22,7 +22,10 @@ public class Puzle2Controller : MonoBehaviour
         final++;
         if (final >= calibradores.Length)
         {
-            puerta.SetTrigger("abrir");
+            for (int i = 0; i < puertas.Length; i++)
+            {
+                puertas[i].SetTrigger("abrir");
+            }
             transform.parent.gameObject.SetActive(false);
             playerController.mov = true;
         }

@@ -15,7 +15,7 @@ public class BobinaController : MonoBehaviour {
 
     public bool enchufado = false;
     public bool accion = false;
-    private bool posicion = false;
+    public bool posicion = false;
     
     private BotonInteractuarController botonInteractuarController;
     

@@ -22,8 +22,11 @@ public class EnchufeController : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            accion = true;
-            botonInteractuarController.visible();
+            if (bobina.GetComponent<BobinaController>().posicion)
+            {
+                accion = true;
+                botonInteractuarController.visible();
+            }
         }
     }
 
@@ -31,14 +34,17 @@ public class EnchufeController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            accion = false;
-            botonInteractuarController.visible();
+            if (bobina.GetComponent<BobinaController>().posicion)
+            {
+                accion = false;
+                botonInteractuarController.visible();
+            }
         }
     }
     
     public void inter(GameObject p)
     {
-        if (accion == true && enchufado == false)
+        if (accion == true && enchufado == false && bobina.GetComponent<BobinaController>().posicion)
         {
             botonInteractuarController.gameObject.SetActive(false);
             bobina.GetComponent<BobinaController>().setEnchufado(true, p);
