@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8685494351006882673, guid: b2f9a5f4a45e3574ab03a4e96e11b100, type: 3}
       propertyPath: m_Name
-      value: PuertaGrande
+      value: PuertaGrandeVertical
       objectReference: {fileID: 0}
     - target: {fileID: 8685494351006882674, guid: b2f9a5f4a45e3574ab03a4e96e11b100, type: 3}
       propertyPath: m_RootOrder
@@ -143,5 +143,9 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8685494351006882677, guid: b2f9a5f4a45e3574ab03a4e96e11b100, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6fd2f7614e0942f48837b8ff157dfcc7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2f9a5f4a45e3574ab03a4e96e11b100, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RotarCalibrador : MonoBehaviour {
 
-    public bool girar = true;
+    public bool girar = false;
     private RectTransform rectTransform;
     private float rotacion = 0;
 
@@ -13,10 +13,6 @@ public class RotarCalibrador : MonoBehaviour {
 
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
-    }
-
-    private void Start() {
-        StartCoroutine("rotar");
     }
 
     IEnumerator rotar() {
@@ -28,12 +24,17 @@ public class RotarCalibrador : MonoBehaviour {
             }
             yield return null;
         }
-        
-        rectTransform.Rotate(0,0,0);
     }
 
     public void startRotar() {
         StartCoroutine("rotar");
+        girar = true;
+    }
+
+    public void stopRotar()
+    {
+        girar = false;
+        rectTransform.Rotate(0,0,0);
     }
     
 }

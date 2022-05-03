@@ -11,7 +11,7 @@ using Vector3 = UnityEngine.Vector3;
 public class PlayerController : MonoBehaviour {
     public float defaultSpeed = 1f;
     public int life = 8;
-    private float speed = 1f;
+    public float speed = 1f;
     public float dashSpeed = 2f;
     private int scale = 1;
     public Animator animator;
@@ -136,12 +136,7 @@ public class PlayerController : MonoBehaviour {
         else {
             input.x = 0;
         }*/
-        
-        if (dashing == false) {
-            //_rigidbody.velocity = new Vector2(input.normalized.x * speed, input.normalized.y * speed);
-            speed = defaultSpeed;
-        }
-        
+
         if (verticalInput > 0 || horizontalInput > 0 || verticalInput < 0 || horizontalInput < 0) {
             animator.SetBool("run",true);
             if (Input.GetButtonDown("Dash"))
@@ -153,6 +148,14 @@ public class PlayerController : MonoBehaviour {
         else
         {
             animator.SetBool("run",false);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (dashing == false) {
+            //_rigidbody.velocity = new Vector2(input.normalized.x * speed, input.normalized.y * speed);
+            speed = defaultSpeed;
         }
     }
 

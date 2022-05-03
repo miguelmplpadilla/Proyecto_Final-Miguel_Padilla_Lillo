@@ -132,6 +132,8 @@ public class AtackController : MonoBehaviour {
         }
         
         GameObject bullet = (GameObject) Instantiate(this.bullet, start, transform.rotation);
+        bullet.GetComponent<EnemyBulletController>().seguir = false;
+        
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
 
         if (transform.localScale.x > 0)

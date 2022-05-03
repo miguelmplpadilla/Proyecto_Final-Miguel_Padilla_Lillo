@@ -21,23 +21,26 @@ public class EnemyBulletController : MonoBehaviour
     {
         StartCoroutine("destruir");
 
-        if (players.Length > 1)
+        if (seguir)
         {
-            if (Vector3.Distance(players[0].transform.position, transform.position) > Vector3.Distance(players[1].transform.position,transform.position))
+            if (players.Length > 1)
             {
-                player = players[1];
+                if (Vector3.Distance(players[0].transform.position, transform.position) > Vector3.Distance(players[1].transform.position,transform.position))
+                {
+                    player = players[1];
+                }
+                else
+                {
+                    player = players[0];
+                }
             }
             else
             {
                 player = players[0];
             }
-        }
-        else
-        {
-            player = players[0];
-        }
         
-        StartCoroutine("contarSeguir");
+            StartCoroutine("contarSeguir");
+        }
     }
 
     private void Update()
@@ -51,7 +54,7 @@ public class EnemyBulletController : MonoBehaviour
 
     IEnumerator contarSeguir()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         seguir = false;
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(player.transform.position.x-transform.position.x,player.transform.position.y-transform.position.y);
     }
