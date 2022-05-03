@@ -16,6 +16,7 @@ TagManager:
   - bala
   - colisionar
   - pared
+  - conectorPuzle
   layers:
   - Default
   - TransparentFX
