@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OpcionesContorller : MonoBehaviour {
@@ -11,6 +12,7 @@ public class OpcionesContorller : MonoBehaviour {
     public List<GameObject> cambioIdioma = new List<GameObject>();
     public Animator animatorPanelOpciones;
     private SaveGame saveGame;
+    public TMPro.TMP_Dropdown dropdown;
 
     private bool abierto = false;
 
@@ -18,7 +20,7 @@ public class OpcionesContorller : MonoBehaviour {
 
     private void Awake() {
         saveGame = GetComponent<SaveGame>();
-        idioma = PlayerPrefs.GetString("idioma");
+        //idioma = PlayerPrefs.GetString("idioma");
     }
 
     private void Update()
@@ -54,7 +56,7 @@ public class OpcionesContorller : MonoBehaviour {
         animatorPanelOpciones.SetTrigger("cerrar");
     }
 
-    public void cambiarIdioma(TMPro.TMP_Dropdown dropdown) {
+    public void cambiarIdioma() {
         idioma = dropdown.options[dropdown.value].text;
         for (int i = 0; i < cambioIdioma.Count; i++) {
             if (cambioIdioma[i].CompareTag("UI"))
@@ -65,9 +67,18 @@ public class OpcionesContorller : MonoBehaviour {
                 cambioIdioma[i].GetComponent<NPCController>().cambiarIdioma();
             }
         }
+        PlayerPrefs.SetString("idioma", idioma);
     }
 
     public string getIdioma() {
         return idioma;
     }
+
+    public void cambiarNivel(bool nuevaPartida) {
+        if (nuevaPartida) {
+            PlayerPrefs.DeleteAll();
+        }
+        SceneManager.LoadScene("Nivel1");
+    }
+    
 }

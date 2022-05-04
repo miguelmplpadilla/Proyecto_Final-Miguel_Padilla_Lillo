@@ -14,10 +14,12 @@ public class SaveGame : MonoBehaviour
 
     private void Awake()
     {
-        playerController = player.gameObject.GetComponent<PlayerController>();
-        gunController = player.gameObject.GetComponent<GunController>();
+        if (player != null) {
+            playerController = player.gameObject.GetComponent<PlayerController>();
+            gunController = player.gameObject.GetComponent<GunController>();
+            puntosController = GameObject.Find("PanelPuntuacion").GetComponent<PuntosController>();
+        }
         opcionesController = GetComponent<OpcionesContorller>();
-        puntosController = GameObject.Find("PanelPuntuacion").GetComponent<PuntosController>();
     }
 
     public void guardarPartida()

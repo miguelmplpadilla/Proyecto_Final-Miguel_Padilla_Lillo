@@ -10,6 +10,7 @@ public class CofreController : MonoBehaviour {
     private bool enCollider = false;
     private GameObject panelPuntos;
     private PuntosController puntosController;
+    private BotonInteractuarController botonInteractuarController;
 
     public Sprite spriteAbierto;
 
@@ -18,6 +19,7 @@ public class CofreController : MonoBehaviour {
     private void Awake() {
         panelPuntos = GameObject.Find("PanelPuntuacion");
         puntosController = panelPuntos.GetComponent<PuntosController>();
+        botonInteractuarController = GetComponentInChildren<BotonInteractuarController>();
     }
 
     public void inter() {
@@ -25,18 +27,21 @@ public class CofreController : MonoBehaviour {
             puntosController.setPuntos(puntos);
             gameObject.GetComponent<SpriteRenderer>().sprite = spriteAbierto;
             abierto = true;
+            botonInteractuarController.visible();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
-        if (col.CompareTag("Player")) {
+        if (col.CompareTag("Player") && !abierto) {
             enCollider = true;
+            botonInteractuarController.visible();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
+        if (other.CompareTag("Player") && !abierto) {
             enCollider = false;
+            botonInteractuarController.visible();
         }
     }
 }

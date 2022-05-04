@@ -15,6 +15,12 @@ public class DesplazadorController : MonoBehaviour, IPointerUpHandler, IPointerD
     private bool enDestino = false;
     public bool listo = false;
 
+    private RectTransform rectTransform;
+
+    private void Awake() {
+        rectTransform = GetComponent<RectTransform>();
+    }
+
     private void Update()
     {
         if (pressed == false && enDestino == true)
@@ -39,7 +45,9 @@ public class DesplazadorController : MonoBehaviour, IPointerUpHandler, IPointerD
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (eventData.position.y < 440 && eventData.position.y > 85)
+        Debug.Log(eventData.pointerCurrentRaycast.screenPosition.y);
+        // Cambiar por worldPosition
+        if (eventData.pointerCurrentRaycast.screenPosition.y < 440 && eventData.pointerCurrentRaycast.screenPosition.y > 85)
         {
             transform.position = new Vector2(transform.position.x, eventData.position.y);
         }

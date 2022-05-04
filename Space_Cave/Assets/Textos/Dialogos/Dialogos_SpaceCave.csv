@@ -8,3 +8,17 @@ Salir,Salir,Exit
 Guardar,Guardar,Save
 GuardarSalir,Guardar y salir,Save and exit
 Idioma,Idioma,Language
+NPC2,Hola camarada,Hi. comrade
+NPC2,Necesito que hagas unas cosas por mi,I need you to do some things for me
+NPC2,execute1,execute1
+NPC2,Que cojones a sido eso?,What the hell is happening?
+NPC2,Sera mejor que nos larguemos de aqui antes de que nos pase algo,It will be better that we leave here before something happens to us
+NPC2,execute2,execute2
+NPC3,Tenemos un problema muy gordo camarada,
+NPC3,Nos estan atacando,
+NPC3,execute3,execute3
+NPC3,Toma esta pistola para protegerte,
+NPC3,Se recarga con el triangulo y se dispara con el cuadrado,
+NPC3,Prueba con esas cajas que tienes delante,
+NPC3,Huye por esa puerta,
+NPC3,execute2,execute2

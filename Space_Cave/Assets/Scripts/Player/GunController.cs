@@ -51,7 +51,7 @@ public class GunController : MonoBehaviour
     void Update() {
         animator.SetBool("gun",gun);
 
-        if (gun == true) {
+        if (gun && player.GetComponent<PlayerController>().mov) {
 
             if (Input.GetButtonDown("Fire")) {
                 if (bulletNum > 0)
