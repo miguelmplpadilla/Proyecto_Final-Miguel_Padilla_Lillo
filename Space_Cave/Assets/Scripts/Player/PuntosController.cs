@@ -18,7 +18,7 @@ public class PuntosController : MonoBehaviour
     }
 
     private void Start() {
-        if (PlayerPrefs.HasKey("vida"))
+        if (PlayerPrefs.HasKey("puntos"))
         {
             if (!SceneManager.GetActiveScene().name.Equals("SampleScene")) {
                 puntos = PlayerPrefs.GetInt("puntos");

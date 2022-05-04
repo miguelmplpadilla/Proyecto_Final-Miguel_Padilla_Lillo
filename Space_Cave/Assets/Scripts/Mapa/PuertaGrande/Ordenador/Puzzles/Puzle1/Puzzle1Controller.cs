@@ -24,6 +24,8 @@ public class Puzzle1Controller : MonoBehaviour
         desplazadorControllers[3] = objectDesplazador[3].GetComponent<DesplazadorController>();
         
         players = GameObject.FindGameObjectsWithTag("Player");
+
+        StartCoroutine("moverDesplazadores");
     }
 
     void Update()
@@ -44,5 +46,20 @@ public class Puzzle1Controller : MonoBehaviour
             Destroy(gameObject);
         }
         
+    }
+
+    IEnumerator moverDesplazadores()
+    {
+        int i = 0;
+        while (true)
+        {
+            float verticalInput = Input.GetAxisRaw("Vertical");
+            desplazadorControllers[i].transform.position = new Vector2(desplazadorControllers[i].transform.position.x, desplazadorControllers[i].transform.position.y+verticalInput*2);
+            if (desplazadorControllers[i].listo)
+            {
+                i++;
+            }
+            yield return null;
+        }
     }
 }

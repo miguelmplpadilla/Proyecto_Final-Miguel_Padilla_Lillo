@@ -12,7 +12,7 @@ public class DesplazadorController : MonoBehaviour, IPointerUpHandler, IPointerD
     private GameObject destino;
 
     private bool pressed;
-    private bool enDestino = false;
+    public bool enDestino = false;
     public bool listo = false;
 
     private void Update()
@@ -20,16 +20,14 @@ public class DesplazadorController : MonoBehaviour, IPointerUpHandler, IPointerD
         if (pressed == false && enDestino == true)
         {
             transform.position = destino.transform.position;
+            listo = true;
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         pressed = false;
-        if (enDestino == true)
-        {
-            listo = true;
-        }
+        listo = true;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -39,7 +37,6 @@ public class DesplazadorController : MonoBehaviour, IPointerUpHandler, IPointerD
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).y < 0 && Camera.main.ScreenToWorldPoint(Input.mousePosition).y > -1)
         {
             transform.position = new Vector2(transform.position.x, eventData.position.y);

@@ -127,7 +127,7 @@ public class NPCController : MonoBehaviour {
             }
 
             while (!seguir) {
-                if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Return)) {
+                if (Input.GetButtonDown("Interactuar")) {
                     seguir = true;
                 }
 

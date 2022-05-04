@@ -63,12 +63,16 @@ public class PlayerController : MonoBehaviour {
                 gameObject.transform.position =
                     new Vector2(PlayerPrefs.GetFloat("playerX"), PlayerPrefs.GetFloat("playerY"));
                 string nivel = PlayerPrefs.GetString("nivel");
-                if (!nivel.Equals(SceneManager.GetActiveScene().name) && !nivel.Equals(""))
-                {
-                    SceneManager.LoadScene(nivel);
-                }
             }
         }*/
+        
+        if (PlayerPrefs.HasKey("vida"))
+        {
+            if (!SceneManager.GetActiveScene().name.Equals("SampleScene"))
+            {
+                life = PlayerPrefs.GetInt("vida");
+            }
+        }
     }
 
     void Update()
@@ -76,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            hit(5);
+            SceneManager.LoadScene("Inicio");
         }
         
 
