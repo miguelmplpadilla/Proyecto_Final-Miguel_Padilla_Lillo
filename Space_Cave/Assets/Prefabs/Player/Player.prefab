@@ -326,6 +326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSpeed: 1.2
   life: 8
+  speed: 1
+  dashSpeed: 2
   animator: {fileID: 8500278253715022383}
   stop: 0
   dashing: 0
@@ -361,8 +363,7 @@ MonoBehaviour:
   bulletNum: 5
   bullets: {fileID: 0}
   disparar: 32
-  taser: 49
-  pistola: 50
+  recargar: 114
   numeroJugador: 1
 --- !u!114 &5388227976195473666
 MonoBehaviour:
