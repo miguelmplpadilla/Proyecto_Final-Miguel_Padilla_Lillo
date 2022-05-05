@@ -9,6 +9,7 @@ public class EnemyHurt : MonoBehaviour
     private Blink blink;
     public GameObject moneda;
     public int puntos = 25;
+    private bool muerto = false;
 
     private void Awake()
     {
@@ -16,16 +17,19 @@ public class EnemyHurt : MonoBehaviour
     }
 
     public void Hit(int damage, GameObject player) {
-        life -= damage;
-        gameObject.SendMessage("setNivelDeteccion",100);
-        if (life <= 0) {
-            gameObject.GetComponent<Animator>().SetTrigger("morir");
-            gameObject.SendMessage("setMov",false);
+        if (!muerto) {
+            life -= damage;
+            gameObject.SendMessage("setNivelDeteccion",100);
+            if (life <= 0) {
+                gameObject.GetComponent<Animator>().SetTrigger("morir");
+                gameObject.SendMessage("setMov",false);
+                muerto = true;
+            }
+            else {
+                blink.takeDamage(1);
+            }
+            gameObject.SendMessage("setPlayer",player);
         }
-        else {
-            blink.takeDamage(1);
-        }
-        gameObject.SendMessage("setPlayer",player);
     }
 
     public void destroyEnemy()

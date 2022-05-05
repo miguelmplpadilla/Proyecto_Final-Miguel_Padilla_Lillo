@@ -53,6 +53,10 @@ public class GunController : MonoBehaviour
 
         if (gun && player.GetComponent<PlayerController>().mov) {
 
+            if (!bullets.transform.parent.gameObject.activeSelf) {
+                bullets.transform.parent.gameObject.SetActive(true);
+            }
+            
             if (Input.GetButtonDown("Fire")) {
                 if (bulletNum > 0)
                 {
@@ -76,13 +80,15 @@ public class GunController : MonoBehaviour
                 recargando = true;
                 StartCoroutine("reload");
             }*/
+            
+            if (!recargando)
+            {
+                bullets.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(15*bulletNum, 20);
+            }
 
         }
 
-        if (!recargando)
-        {
-            bullets.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(15*bulletNum, 20);
-        }
+        
 
     }
 

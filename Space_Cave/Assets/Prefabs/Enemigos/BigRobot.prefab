@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb095094a73f344d9a9c2e7a23fdafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
+  life: 8
   moneda: {fileID: 3649853541347263908, guid: 6004dc30be7eeb14faa04d33c5c987a5, type: 3}
   puntos: 25
 --- !u!114 &8716704287722641748

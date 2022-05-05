@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
     private bool invulnerable = false;
     public GameObject vida;
     private GunController gunController;
+    private bool muerto = false;
 
     private Vector2 input;
 
@@ -166,14 +167,18 @@ public class PlayerController : MonoBehaviour {
     public void hit(int damage)
     {
         if (invulnerable == false) {
-            life -= damage;
-            if (life <= 0)
-            {
-                animator.SetTrigger("death");
-            }
-            else {
-                blink.takeDamage(2);
-                StartCoroutine("invulnerabilidad");
+            if (!muerto) {
+                life -= damage;
+                if (life <= 0)
+                {
+                    animator.SetTrigger("death");
+                    muerto = true;
+                    PlayerPrefs.SetInt("vida",8);
+                }
+                else {
+                    blink.takeDamage(2);
+                    StartCoroutine("invulnerabilidad");
+                }
             }
         }
     }

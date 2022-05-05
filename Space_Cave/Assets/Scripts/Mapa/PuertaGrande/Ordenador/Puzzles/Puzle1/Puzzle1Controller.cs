@@ -54,7 +54,7 @@ public class Puzzle1Controller : MonoBehaviour
         while (true)
         {
             float verticalInput = Input.GetAxisRaw("Vertical");
-            desplazadorControllers[i].transform.position = new Vector2(desplazadorControllers[i].transform.position.x, desplazadorControllers[i].transform.position.y+verticalInput*2);
+            desplazadorControllers[i].transform.position = new Vector2(desplazadorControllers[i].transform.position.x, desplazadorControllers[i].transform.position.y+verticalInput*10);
             if (desplazadorControllers[i].listo)
             {
                 i++;
