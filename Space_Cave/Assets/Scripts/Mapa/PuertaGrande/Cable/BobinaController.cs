@@ -93,5 +93,6 @@ public class BobinaController : MonoBehaviour {
             linea.SetActive(true);
             posicion = true;
         }
+        p.GetComponentInChildren<InteractuarController>().interaactuando = false;
     }
 }

@@ -49,7 +49,7 @@ public class PalancaController : MonoBehaviour
         }
     }
 
-    public void inter()
+    public void inter(GameObject p)
     {
         if (accion == true)
         {
@@ -62,6 +62,7 @@ public class PalancaController : MonoBehaviour
             {
                 puerta.SetTrigger("cerrar");
             }
+            p.GetComponentInChildren<InteractuarController>().interaactuando = false;
         }
     }
 }

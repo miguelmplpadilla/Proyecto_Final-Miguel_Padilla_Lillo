@@ -45,11 +45,10 @@ public class OrdenadorController : MonoBehaviour
             enPuzle = true;
             panelPuzle.SetActive(true);
             botonInteractuarController.gameObject.SetActive(false);
-        }
-
-        for (int i = 0; i < players.Length; i++)
-        {
-            players[i].GetComponent<PlayerController>().mov = false;
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i].GetComponent<PlayerController>().mov = false;
+            }
         }
     }
 }

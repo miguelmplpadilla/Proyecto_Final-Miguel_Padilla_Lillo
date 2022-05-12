@@ -21,6 +21,7 @@ public class BotiquinController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = spriteSinBotiquin;
             botonInteractuarController.gameObject.SetActive(false);
             curado = true;
+            player.GetComponentInChildren<InteractuarController>().interaactuando = false;
         }
     }
 

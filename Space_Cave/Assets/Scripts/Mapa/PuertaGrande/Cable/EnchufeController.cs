@@ -49,6 +49,7 @@ public class EnchufeController : MonoBehaviour
             botonInteractuarController.gameObject.SetActive(false);
             bobina.GetComponent<BobinaController>().setEnchufado(true, p);
             enchufado = true;
+            p.GetComponentInChildren<InteractuarController>().interaactuando = false;
         }
     }
 }

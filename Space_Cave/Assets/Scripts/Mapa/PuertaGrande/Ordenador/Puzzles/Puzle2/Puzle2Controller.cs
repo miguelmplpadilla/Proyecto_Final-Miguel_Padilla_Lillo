@@ -28,6 +28,7 @@ public class Puzle2Controller : MonoBehaviour
             }
             transform.parent.gameObject.SetActive(false);
             playerController.mov = true;
+            playerController.gameObject.GetComponentInChildren<InteractuarController>().interaactuando = false;
         }
         else
         {

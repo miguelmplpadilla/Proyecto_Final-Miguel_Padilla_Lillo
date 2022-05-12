@@ -42,6 +42,7 @@ public class Puzzle1Controller : MonoBehaviour
             for (int i = 0; i < players.Length; i++)
             {
                 players[i].GetComponent<PlayerController>().mov = true;
+                players[i].GetComponentInChildren<InteractuarController>().interaactuando = false;
             }
             Destroy(gameObject);
         }

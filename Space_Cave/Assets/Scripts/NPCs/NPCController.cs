@@ -144,6 +144,8 @@ public class NPCController : MonoBehaviour {
         for (int i = 0; i < players.Length; i++) {
             players[i].GetComponent<PlayerController>().mov = true;
         }
+
+        player.GetComponentInChildren<InteractuarController>().interaactuando = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

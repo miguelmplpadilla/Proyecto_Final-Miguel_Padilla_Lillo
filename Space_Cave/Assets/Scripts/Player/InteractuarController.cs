@@ -8,6 +8,7 @@ public class InteractuarController : MonoBehaviour
 
     private bool hablar = false;
     private GameObject objectinteractuar;
+    public bool interaactuando = false;
 
     public KeyCode interactuar = KeyCode.F;
     
@@ -25,9 +26,12 @@ public class InteractuarController : MonoBehaviour
     {
         if (hablar == true)
         {
-            if (Input.GetButtonDown("Interactuar"))
-            {
-                objectinteractuar.SendMessage("inter", gameObject);
+            if (!interaactuando) {
+                if (Input.GetButtonDown("Interactuar"))
+                {
+                    objectinteractuar.SendMessage("inter", gameObject);
+                    interaactuando = true;
+                }
             }
         }
     }
