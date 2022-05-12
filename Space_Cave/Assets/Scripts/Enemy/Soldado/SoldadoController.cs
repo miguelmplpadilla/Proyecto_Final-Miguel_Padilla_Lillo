@@ -116,13 +116,16 @@ public class SoldadoController : MonoBehaviour
 
     public void restar(float num)
     {
-        if (nivelDeteccion > 0)
+        if (!detectado)
         {
-            nivelDeteccion -= num;
-        }
-        if (nivelDeteccion < 0)
-        {
-            nivelDeteccion = 0;
+            if (nivelDeteccion > 0)
+            {
+                nivelDeteccion -= num;
+            }
+            if (nivelDeteccion < 0)
+            {
+                nivelDeteccion = 0;
+            }
         }
     }
 
@@ -131,25 +134,17 @@ public class SoldadoController : MonoBehaviour
         player = p;
     }
 
-    public void shoot(int point)
+    public void shoot()
     {
+        Debug.Log("Soldado disparando");
         Vector3 start = new Vector3(0,0,0);
         start = shootingPoint.transform.position;
         
         GameObject bullet = (GameObject) Instantiate(this.bullet, start, transform.rotation);
-        bullet.GetComponent<EnemyBulletController>().bulletSpeed = bulletSpeed;
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+        bullet.GetComponent<EnemyBulletController>().seguir = false;
 
-        /*if (transform.localScale.x > 0)
-        {
-            bulletRigidbody.velocity = new Vector2(1f * bulletSpeed, 0 * bulletSpeed);
-        }
-        else
-        {
-            bulletRigidbody.velocity = new Vector2(-1f * bulletSpeed, 0 * bulletSpeed);
-        }*/
-
-        bulletRigidbody.transform.localScale = transform.localScale;
+        bulletRigidbody.velocity = new Vector2((player.transform.position.x-transform.position.x) * bulletSpeed,(player.transform.position.y-transform.position.y) * bulletSpeed);
     }
 
     public void stopShooting() {

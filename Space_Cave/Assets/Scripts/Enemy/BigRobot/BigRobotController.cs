@@ -131,7 +131,7 @@ public class BigRobotController : MonoBehaviour
         player = p;
     }
 
-    public void shoot(int point)
+    public void shoot()
     {
         Vector3 start = new Vector3(0,0,0);
         start = shootingPoint.transform.position;
