@@ -9,11 +9,16 @@ public class PuntoGuardadoController : MonoBehaviour
     private bool interactuar = false;
     public GameObject panelGuardadoPartida;
     public GameObject player;
+    public BotonInteractuarController botonInteractuarController;
     
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            if (interactuar == false)
+            {
+                botonInteractuarController.visible();
+            }
             interactuar = true;
         }
     }
@@ -22,6 +27,7 @@ public class PuntoGuardadoController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            botonInteractuarController.visible();
             interactuar = false;
         }
     }
@@ -50,5 +56,10 @@ public class PuntoGuardadoController : MonoBehaviour
         panelGuardado.SetActive(false);
         player.GetComponent<PlayerController>().mov = true;
         player.GetComponentInChildren<InteractuarController>().interaactuando = false;
+    }
+
+    public void volver(GameObject panel)
+    {
+        panel.SetActive(false);
     }
 }

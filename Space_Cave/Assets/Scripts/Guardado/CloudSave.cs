@@ -105,14 +105,32 @@ public class CloudSave : MonoBehaviour {
     {
         
         GetComponent<SaveGame>().guardarPartida();
-        
-        MySqlCommand cmd = conexion.CreateCommand();
-        
+
         if (PlayerPrefs.HasKey("usuario"))
         {
-            cmd.CommandText = "INSERT INTO `partida` (`id`,`nivel`, `puntuacion`, `posicion_nivel`, `fk_usuario`, `vida`) VALUES (NULL ,'"+PlayerPrefs.GetString("nivel")+"', '"+PlayerPrefs.GetString("puntos")+"', '"+"1"+"', '"+PlayerPrefs.GetInt("idUsuario")+"', '"+PlayerPrefs.GetInt("vida")+"')";
-            MySqlDataReader resultado = cmd.ExecuteReader();
-            resultado.Close();
+            
+            MySqlCommand cmd1 = conexion.CreateCommand();
+            cmd1.CommandText = "SELECT * FROM `partida` WHERE `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"'";
+            MySqlDataReader resultado1 = cmd1.ExecuteReader();
+
+            if (!resultado1.HasRows)
+            {
+                resultado1.Close();
+                MySqlCommand cmd = conexion.CreateCommand();
+            
+                cmd.CommandText = "INSERT INTO `partida` (`id`,`nivel`, `puntuacion`, `posicionX`, `posicionY`, `fk_usuario`, `vida`, `pistola`) VALUES (NULL ,'"+PlayerPrefs.GetString("nivel")+"', '"+PlayerPrefs.GetString("puntos")+"', '"+PlayerPrefs.GetInt("playerX")+"', '"+PlayerPrefs.GetInt("playerY")+"', '"+PlayerPrefs.GetInt("idUsuario")+"', '"+PlayerPrefs.GetInt("vida")+"', '"+PlayerPrefs.GetInt("gun")+"')";
+                MySqlDataReader resultado = cmd.ExecuteReader();
+                resultado.Close();
+            }
+            else
+            {
+                resultado1.Close();
+                MySqlCommand cmd = conexion.CreateCommand();
+            
+                cmd.CommandText = "UPDATE `partida` SET `id` = NULL,`nivel` = '"+PlayerPrefs.GetString("nivel")+"', `puntuacion` = '"+PlayerPrefs.GetString("puntos")+"', `posicionX` = '"+PlayerPrefs.GetInt("playerX")+"', `posicionY` = '"+PlayerPrefs.GetInt("playerY")+"', `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"', `vida` = '"+PlayerPrefs.GetInt("vida")+"', `pistola` = '"+PlayerPrefs.GetInt("gun")+"' WHERE fk_usuario = '"+PlayerPrefs.GetInt("idUsuario")+"'";
+                MySqlDataReader resultado = cmd.ExecuteReader();
+                resultado.Close();
+            }
             
             bool decision = EditorUtility.DisplayDialog(
                 "Guardado en la nube correcto",
