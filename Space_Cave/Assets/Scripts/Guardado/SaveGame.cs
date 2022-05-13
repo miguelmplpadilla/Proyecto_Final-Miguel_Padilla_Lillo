@@ -9,7 +9,7 @@ public class SaveGame : MonoBehaviour
     public GameObject player;
     private PlayerController playerController;
     private GunController gunController;
-    private OpcionesContorller opcionesController;
+    public OpcionesContorller opcionesController;
     private PuntosController puntosController;
 
     private void Awake()
@@ -19,7 +19,6 @@ public class SaveGame : MonoBehaviour
             gunController = player.gameObject.GetComponent<GunController>();
             puntosController = GameObject.Find("PanelPuntuacion").GetComponent<PuntosController>();
         }
-        opcionesController = GetComponent<OpcionesContorller>();
     }
 
     public void guardarPartida()
