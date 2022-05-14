@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 223418764}
   m_Layer: 0
   m_Name: Arriba
-  m_TagString: Untagged
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6455,7 +6455,7 @@ GameObject:
   - component: {fileID: 666680817}
   m_Layer: 0
   m_Name: PropsColision
-  m_TagString: Untagged
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9420,7 +9420,7 @@ GameObject:
   - component: {fileID: 1304588360}
   m_Layer: 0
   m_Name: Abajo
-  m_TagString: Untagged
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
