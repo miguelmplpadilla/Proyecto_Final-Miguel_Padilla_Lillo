@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,5 +32,12 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetString("nivel",SceneManager.GetActiveScene().name);
         PlayerPrefs.SetInt("puntos",puntosController.getPuntos());
         PlayerPrefs.Save();
+        
+        bool decision = EditorUtility.DisplayDialog(
+            "Guardado correcto",
+            "Se ha guardado la partida correctamente", 
+            "Ok"
+        );
+        
     }
 }

@@ -1595,27 +1595,6 @@ Transform:
   m_Father: {fileID: 155458119}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &466510683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7768651254681926671, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-  m_PrefabInstance: {fileID: 1598957512}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &466510688
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466510683}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.069302484, y: -0.014885198}
-  m_Size: {x: 0.27550203, y: 0.08360751}
-  m_Direction: 0
 --- !u!1 &466606869
 GameObject:
   m_ObjectHideFlags: 0
@@ -6435,26 +6414,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6128887606975237254, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Size.x
-      value: 0.27749562
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128887606975237254, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.083574995
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128887606975237254, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128887606975237254, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.067664385
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128887606975237254, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.01489714
-      objectReference: {fileID: 0}
     - target: {fileID: 8500278253715022371, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -6502,22 +6461,6 @@ PrefabInstance:
     - target: {fileID: 8500278253715022377, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500278253715022378, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Size.x
-      value: 0.09639835
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500278253715022378, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.18010697
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500278253715022378, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.006307125
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500278253715022378, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.013812229
       objectReference: {fileID: 0}
     - target: {fileID: 8500278253715022379, guid: 17b466011aae08248b83f77f78d2ef0b, type: 3}
       propertyPath: bullets

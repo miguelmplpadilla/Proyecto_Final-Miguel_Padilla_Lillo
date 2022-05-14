@@ -80,5 +80,10 @@ public class OpcionesContorller : MonoBehaviour {
         }
         SceneManager.LoadScene("Nivel1");
     }
+
+    public void salirJuego() {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
     
 }

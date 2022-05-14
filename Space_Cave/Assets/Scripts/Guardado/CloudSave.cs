@@ -15,6 +15,7 @@ public class CloudSave : MonoBehaviour {
 
     private string datosConexion;
     private MySqlConnection conexion;
+    private bool conectado = false;
 
     public TMP_InputField nombreInicioSesion;
     public TMP_InputField contrasenaInicioSesion;
@@ -48,101 +49,137 @@ public class CloudSave : MonoBehaviour {
     }
 
 
-    public void registrar()
-    {
-        MySqlCommand cmd = conexion.CreateCommand();
+    public void registrar() {
+        bool realizar = true;
+        if (!conectado) {
+            realizar = conectarBaseDatos();
+        }
 
-        bool correcto = true;
+        if (realizar) {
+            MySqlCommand cmd = conexion.CreateCommand();
+
+            bool correcto = true;
         
-        if (nombreRegistro.text.Length < 3 || nombreRegistro.text.Length > 10)
-        {
+            if (nombreRegistro.text.Length < 3 || nombreRegistro.text.Length > 10)
+            {
+                bool decision = EditorUtility.DisplayDialog(
+                    "Error registro",
+                    "Escribe un nombre de usuario", 
+                    "Ok"
+                );
+                correcto = false;
+            }
+        
+            if (nombreRegistro.text.Length < 3 || nombreRegistro.text.Length > 10 && correcto)
+            {
+                bool decision = EditorUtility.DisplayDialog(
+                    "Error registro",
+                    "Escribe una contraseña", 
+                    "Ok"
+                );
+                correcto = false;
+            }
+
+            if (correcto)
+            {
+                cmd.CommandText = "INSERT INTO `usuarios` (`id`,`nombre`, `contrasena`) VALUES (NULL ,'"+nombreRegistro.text+"', '"+contrasenaRegistro.text+"')";
+                MySqlDataReader resultado = cmd.ExecuteReader();
+                resultado.Close();
+
+                MySqlCommand cmd2 = conexion.CreateCommand();
+                cmd2.CommandText = "SELECT * FROM `usuarios` WHERE `nombre` = '"+nombreRegistro.text+"' AND `contrasena` = '"+contrasenaRegistro.text+"'";
+                MySqlDataReader resultado2 = cmd2.ExecuteReader();
+
+                resultado2.Read();
+            
+                PlayerPrefs.SetInt("idUsuario", resultado2.GetInt32(0));
+                PlayerPrefs.SetString("usuario", nombreRegistro.text);
+                PlayerPrefs.SetString("contrasena", contrasenaRegistro.text);
+                PlayerPrefs.Save();
+
+                resultado2.Close();
+                
+                nombreRegistro.text = "";
+                contrasenaRegistro.text = "";
+
+                bool decision = EditorUtility.DisplayDialog(
+                    "Registro correcto",
+                    "Usuario registrado correctamente", 
+                    "Ok"
+                );
+            
+                nombreRegistro.transform.parent.gameObject.SetActive(false);
+            
+                setUsuarioTexto();
+                resultado.Close();
+            }
+        }
+        else {
             bool decision = EditorUtility.DisplayDialog(
-                "Error registro",
-                "Escribe un nombre de usuario", 
+                "Error de conexion",
+                "No se ha podido realizar la conexion a la base de datos, pruebe mas tarde", 
                 "Ok"
             );
-            correcto = false;
         }
         
-        if (nombreRegistro.text.Length < 3 || nombreRegistro.text.Length > 10 && correcto)
-        {
-            bool decision = EditorUtility.DisplayDialog(
-                "Error registro",
-                "Escribe una contraseña", 
-                "Ok"
-            );
-            correcto = false;
-        }
-
-        if (correcto)
-        {
-            cmd.CommandText = "INSERT INTO `usuarios` (`id`,`nombre`, `contrasena`) VALUES (NULL ,'"+nombreRegistro.text+"', '"+contrasenaRegistro.text+"')";
-            MySqlDataReader resultado = cmd.ExecuteReader();
-
-            resultado.Read();
-            
-            PlayerPrefs.SetInt("idUsuario", resultado.GetInt32(0));
-            PlayerPrefs.SetString("usuario", nombreRegistro.text);
-            PlayerPrefs.SetString("contrasena", contrasenaRegistro.text);
-
-            nombreRegistro.text = "";
-            contrasenaRegistro.text = "";
-
-            bool decision = EditorUtility.DisplayDialog(
-                "Registro correcto",
-                "Usuario registrado correctamente", 
-                "Ok"
-            );
-            
-            nombreRegistro.transform.parent.gameObject.SetActive(false);
-            
-            setUsuarioTexto();
-            resultado.Close();
-        }
     }
 
     public void guardarNube()
     {
         
-        GetComponent<SaveGame>().guardarPartida();
+        bool realizar = true;
+        if (!conectado) {
+            realizar = conectarBaseDatos();
+        }
 
-        if (PlayerPrefs.HasKey("usuario"))
-        {
-            
-            MySqlCommand cmd1 = conexion.CreateCommand();
-            cmd1.CommandText = "SELECT * FROM `partida` WHERE `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"'";
-            MySqlDataReader resultado1 = cmd1.ExecuteReader();
+        if (realizar) {
+            GetComponent<SaveGame>().guardarPartida();
 
-            if (!resultado1.HasRows)
+            if (PlayerPrefs.HasKey("usuario"))
             {
-                resultado1.Close();
-                MySqlCommand cmd = conexion.CreateCommand();
-            
-                cmd.CommandText = "INSERT INTO `partida` (`id`,`nivel`, `puntuacion`, `posicionX`, `posicionY`, `fk_usuario`, `vida`, `pistola`) VALUES (NULL ,'"+PlayerPrefs.GetString("nivel")+"', '"+PlayerPrefs.GetString("puntos")+"', '"+PlayerPrefs.GetInt("playerX")+"', '"+PlayerPrefs.GetInt("playerY")+"', '"+PlayerPrefs.GetInt("idUsuario")+"', '"+PlayerPrefs.GetInt("vida")+"', '"+PlayerPrefs.GetInt("gun")+"')";
-                MySqlDataReader resultado = cmd.ExecuteReader();
-                resultado.Close();
+                
+                MySqlCommand cmd1 = conexion.CreateCommand();
+                cmd1.CommandText = "SELECT * FROM `partida` WHERE `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"'";
+                MySqlDataReader resultado1 = cmd1.ExecuteReader();
+
+                if (!resultado1.HasRows)
+                {
+                    resultado1.Close();
+                    MySqlCommand cmd = conexion.CreateCommand();
+                
+                    cmd.CommandText = "INSERT INTO `partida` (`id`,`nivel`, `puntuacion`, `posicionX`, `posicionY`, `fk_usuario`, `vida`, `pistola`) VALUES (NULL ,'"+PlayerPrefs.GetString("nivel")+"', '"+PlayerPrefs.GetString("puntos")+"', '"+PlayerPrefs.GetInt("playerX")+"', '"+PlayerPrefs.GetInt("playerY")+"', '"+PlayerPrefs.GetInt("idUsuario")+"', '"+PlayerPrefs.GetInt("vida")+"', '"+PlayerPrefs.GetInt("gun")+"')";
+                    MySqlDataReader resultado = cmd.ExecuteReader();
+                    resultado.Close();
+                }
+                else
+                {
+                    resultado1.Close();
+                    MySqlCommand cmd = conexion.CreateCommand();
+                
+                    cmd.CommandText = "UPDATE `partida` SET `id` = NULL,`nivel` = '"+PlayerPrefs.GetString("nivel")+"', `puntuacion` = '"+PlayerPrefs.GetString("puntos")+"', `posicionX` = '"+PlayerPrefs.GetInt("playerX")+"', `posicionY` = '"+PlayerPrefs.GetInt("playerY")+"', `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"', `vida` = '"+PlayerPrefs.GetInt("vida")+"', `pistola` = '"+PlayerPrefs.GetInt("gun")+"' WHERE fk_usuario = '"+PlayerPrefs.GetInt("idUsuario")+"'";
+                    MySqlDataReader resultado = cmd.ExecuteReader();
+                    resultado.Close();
+                }
+                
+                bool decision = EditorUtility.DisplayDialog(
+                    "Guardado en la nube correcto",
+                    "Se ha guardado correctamente en la nube", 
+                    "Ok"
+                );
             }
             else
             {
-                resultado1.Close();
-                MySqlCommand cmd = conexion.CreateCommand();
-            
-                cmd.CommandText = "UPDATE `partida` SET `id` = NULL,`nivel` = '"+PlayerPrefs.GetString("nivel")+"', `puntuacion` = '"+PlayerPrefs.GetString("puntos")+"', `posicionX` = '"+PlayerPrefs.GetInt("playerX")+"', `posicionY` = '"+PlayerPrefs.GetInt("playerY")+"', `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"', `vida` = '"+PlayerPrefs.GetInt("vida")+"', `pistola` = '"+PlayerPrefs.GetInt("gun")+"' WHERE fk_usuario = '"+PlayerPrefs.GetInt("idUsuario")+"'";
-                MySqlDataReader resultado = cmd.ExecuteReader();
-                resultado.Close();
+                bool decision = EditorUtility.DisplayDialog(
+                    "Error guardado",
+                    "Necesitas iniciar sesion para poder guardar en la nube", 
+                    "Ok"
+                );
             }
-            
-            bool decision = EditorUtility.DisplayDialog(
-                "Guardado en la nube correcto",
-                "Se ha guardado correctamente en la nube", 
-                "Ok"
-            );
         }
-        else
-        {
+        else {
             bool decision = EditorUtility.DisplayDialog(
-                "Error guardado",
-                "Necesitas iniciar sesion para poder guardar en la nube", 
+                "Error en la base de datos",
+                "No se ha podido realizar la conexion con la base de datos, pruebe mas tarde", 
                 "Ok"
             );
         }
@@ -150,51 +187,69 @@ public class CloudSave : MonoBehaviour {
 
     public void iniciarSesion()
     {
-        MySqlCommand cmd = conexion.CreateCommand();
-        cmd.CommandText = "SELECT * FROM `usuarios` WHERE `nombre` = '"+nombreInicioSesion.text+"' AND `contrasena` = '"+contrasenaInicioSesion.text+"'";
-        MySqlDataReader resultado = cmd.ExecuteReader();
+        
+        bool realizar = true;
+        if (!conectado) {
+            realizar = conectarBaseDatos();
+        }
 
-        if (resultado.HasRows)
-        {
+        if (realizar) {
+            MySqlCommand cmd = conexion.CreateCommand();
+            cmd.CommandText = "SELECT * FROM `usuarios` WHERE `nombre` = '"+nombreInicioSesion.text+"' AND `contrasena` = '"+contrasenaInicioSesion.text+"'";
+            MySqlDataReader resultado = cmd.ExecuteReader();
+
+            if (resultado.HasRows)
+            {
+                bool decision = EditorUtility.DisplayDialog(
+                    "Inicio de sesion correcto",
+                    "Se ha iniciado sesion correctamente", 
+                    "Ok"
+                );
+
+                resultado.Read();
+            
+                PlayerPrefs.SetInt("idUsuario", resultado.GetInt32(0));
+                PlayerPrefs.SetString("usuario", nombreInicioSesion.text);
+                PlayerPrefs.SetString("contrasena", contrasenaInicioSesion.text);
+                PlayerPrefs.Save();
+
+                nombreInicioSesion.text = "";
+                contrasenaInicioSesion.text = "";
+            
+                nombreInicioSesion.transform.parent.gameObject.SetActive(false);
+                setUsuarioTexto();
+            }
+            else
+            {
+                bool decision = EditorUtility.DisplayDialog(
+                    "Error inicio de sesion",
+                    "No se ha encontrado el usuario especificado", 
+                    "Ok"
+                );
+            }
+        
+            resultado.Close();
+        }
+        else {
             bool decision = EditorUtility.DisplayDialog(
-                "Inicio de sesion correcto",
-                "Se ha iniciado sesion correctamente", 
+                "Error en la base de datos",
+                "No se ha podido realizar la conexion con la base de datos, pruebe mas tarde", 
                 "Ok"
             );
-
-            resultado.Read();
-            
-            PlayerPrefs.SetInt("idUsuario", resultado.GetInt32(0));
-            PlayerPrefs.SetString("usuario", nombreInicioSesion.text);
-            PlayerPrefs.SetString("contrasena", contrasenaInicioSesion.text);
-
-            nombreInicioSesion.text = "";
-            contrasenaInicioSesion.text = "";
-            
-            nombreInicioSesion.transform.parent.gameObject.SetActive(false);
-            setUsuarioTexto();
         }
-        else
-        {
-            bool decision = EditorUtility.DisplayDialog(
-                "Error inicio de sesion",
-                "No se ha encontrado el usuario especificado", 
-                "Ok"
-            );
-        }
-        
-        resultado.Close();
-        
     }
 
-    private void conectarBaseDatos() {
+    private bool conectarBaseDatos() {
         conexion = new MySqlConnection(datosConexion);
         try {
             conexion.Open();
+            conectado = true;
+            return true;
         }
         catch (Exception error) {
-            Debug.Log("Conexion incorrecta a base de datos: "+error);
+            Debug.Log("Conexion incorrecta a base de datos: " + error);
+            conectado = false;
+            return false;
         }
-
     }
 }

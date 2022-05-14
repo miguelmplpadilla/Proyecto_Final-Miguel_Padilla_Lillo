@@ -134,6 +134,7 @@ public class GunController : MonoBehaviour
     {
         gun = true;
         PlayerPrefs.SetInt("gun",1);
+        PlayerPrefs.Save();
     }
     
 }
