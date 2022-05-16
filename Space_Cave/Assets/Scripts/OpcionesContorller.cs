@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,11 @@ public class OpcionesContorller : MonoBehaviour {
     private void Awake() {
         saveGame = GetComponent<SaveGame>();
         //idioma = PlayerPrefs.GetString("idioma");
+    }
+
+    private void Start()
+    {
+        cambioIdioma = GameObject.FindGameObjectsWithTag("Idioma").ToList();
     }
 
     private void Update()
@@ -59,15 +65,10 @@ public class OpcionesContorller : MonoBehaviour {
     public void cambiarIdioma() {
         idioma = dropdown.options[dropdown.value].text;
         for (int i = 0; i < cambioIdioma.Count; i++) {
-            if (cambioIdioma[i].CompareTag("UI"))
-            {
-                cambioIdioma[i].GetComponent<IdiomaOpciones>().cambiarIdioma();
-            } else if (cambioIdioma[i].CompareTag("NPC"))
-            {
-                cambioIdioma[i].GetComponent<NPCController>().cambiarIdioma();
-            }
+            cambioIdioma[i].SendMessage("cambiarIdioma");
         }
         PlayerPrefs.SetString("idioma", idioma);
+        PlayerPrefs.Save();
     }
 
     public string getIdioma() {

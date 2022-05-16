@@ -17,6 +17,7 @@ TagManager:
   - colisionar
   - pared
   - conectorPuzle
+  - Idioma
   layers:
   - Default
   - TransparentFX

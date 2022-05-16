@@ -13,6 +13,7 @@ public class BossController : MonoBehaviour
     public GameObject vida;
     public GameObject player;
     public GameObject shootingPoint;
+    public GameObject shootingPoint2;
     
     public GameObject bullet;
     public GameObject misil;
@@ -45,15 +46,30 @@ public class BossController : MonoBehaviour
         }
     }
 
-    public void shoot()
+    public void shoot(int bala)
     {
         Vector3 start = new Vector3(0,0,0);
-        start = shootingPoint.transform.position;
-        
-        GameObject bul = (GameObject) Instantiate(misil, start, transform.rotation);
-        Rigidbody2D bulletRigidbody = bul.GetComponent<Rigidbody2D>();
 
-        bulletRigidbody.velocity = new Vector2((player.transform.position.x-transform.position.x),(player.transform.position.y-transform.position.y));
+        if (bala == 1)
+        {
+            start = shootingPoint.transform.position;
+            GameObject bul = (GameObject) Instantiate(misil, start, transform.rotation);
+            Rigidbody2D bulletRigidbody = bul.GetComponent<Rigidbody2D>();
+
+            Vector2 moveDirection = (player.transform.position - transform.position).normalized * 0.7f;
+            
+            bulletRigidbody.velocity = new Vector2(moveDirection.x, moveDirection.y);
+        } else if (bala == 2)
+        {
+            start = shootingPoint2.transform.position;
+            GameObject bul = (GameObject) Instantiate(bullet, start, transform.rotation);
+            Rigidbody2D bulletRigidbody = bul.GetComponent<Rigidbody2D>();
+            bul.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
+            Vector2 moveDirection = (player.transform.position - transform.position).normalized * 0.6f;
+            
+            bulletRigidbody.velocity = new Vector2(moveDirection.x, moveDirection.y);
+        }
     }
 
     public void setPlayer(GameObject p)
