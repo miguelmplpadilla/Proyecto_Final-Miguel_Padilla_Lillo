@@ -94,7 +94,6 @@ public class CloudSave : MonoBehaviour {
             
                 PlayerPrefs.SetInt("idUsuario", resultado2.GetInt32(0));
                 PlayerPrefs.SetString("usuario", nombreRegistro.text);
-                PlayerPrefs.SetString("contrasena", contrasenaRegistro.text);
                 PlayerPrefs.Save();
 
                 resultado2.Close();
@@ -210,7 +209,6 @@ public class CloudSave : MonoBehaviour {
             
                 PlayerPrefs.SetInt("idUsuario", resultado.GetInt32(0));
                 PlayerPrefs.SetString("usuario", nombreInicioSesion.text);
-                PlayerPrefs.SetString("contrasena", contrasenaInicioSesion.text);
                 PlayerPrefs.Save();
 
                 nombreInicioSesion.text = "";

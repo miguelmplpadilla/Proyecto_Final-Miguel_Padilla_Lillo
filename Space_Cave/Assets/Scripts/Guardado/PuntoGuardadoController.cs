@@ -37,29 +37,29 @@ public class PuntoGuardadoController : MonoBehaviour
         if (interactuar)
         {
             p.GetComponentInParent<PlayerController>().mov = false;
-            panelGuardadoPartida.SetActive(true);
+            panelGuardadoPartida.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
     }
 
     public void iniciarSesion(GameObject panelInicioSesion)
     {
-        panelInicioSesion.SetActive(true);
+        panelInicioSesion.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
     }
     
     public void registrar(GameObject panelRegistrar)
     {
-        panelRegistrar.SetActive(true);
+        panelRegistrar.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
     }
 
     public void cerrarPanelGuardado(GameObject panelGuardado)
     {
-        panelGuardado.SetActive(false);
+        panelGuardado.GetComponent<RectTransform>().localScale = new Vector3(0, 1, 1);
         player.GetComponent<PlayerController>().mov = true;
         player.GetComponentInChildren<InteractuarController>().interaactuando = false;
     }
 
     public void volver(GameObject panel)
     {
-        panel.SetActive(false);
+        panel.GetComponent<RectTransform>().localScale = new Vector3(0, 1, 1);
     }
 }
