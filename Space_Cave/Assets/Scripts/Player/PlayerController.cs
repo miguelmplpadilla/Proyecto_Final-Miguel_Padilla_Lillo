@@ -59,16 +59,13 @@ public class PlayerController : MonoBehaviour {
         {
             if (!SceneManager.GetActiveScene().name.Equals("SampleScene"))
             {
-                life = PlayerPrefs.GetInt("vida");
-                gunController.bulletNum = PlayerPrefs.GetInt("balas");
-                Debug.Log("X: "+PlayerPrefs.GetFloat("playerX")+" Y: "+PlayerPrefs.GetFloat("playerY"));
-                gameObject.transform.position =
-                    new Vector2(PlayerPrefs.GetFloat("playerX"), PlayerPrefs.GetFloat("playerY"));
-                string nivel = PlayerPrefs.GetString("nivel");
-
-                if (!SceneManager.GetActiveScene().name.Equals(nivel))
+                if (SceneManager.GetActiveScene().name.Equals(PlayerPrefs.GetString("nivel")))
                 {
-                    SceneManager.LoadScene(nivel);
+                    life = PlayerPrefs.GetInt("vida");
+                    gunController.bulletNum = PlayerPrefs.GetInt("balas");
+                    Debug.Log("X: "+PlayerPrefs.GetFloat("playerX")+" Y: "+PlayerPrefs.GetFloat("playerY"));
+                    gameObject.transform.position =
+                        new Vector2(PlayerPrefs.GetFloat("playerX"), PlayerPrefs.GetFloat("playerY"));
                 }
             }
         }
@@ -184,7 +181,7 @@ public class PlayerController : MonoBehaviour {
     IEnumerator resetearNivel()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(PlayerPrefs.GetString("nivel"));
     }
 
     IEnumerator invulnerabilidad() {

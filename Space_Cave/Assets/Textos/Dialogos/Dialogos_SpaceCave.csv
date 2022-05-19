@@ -31,7 +31,9 @@ CargarPartidaNube,Cargar Partida Nube,Load Cloud Game
 GuardarNube,Guardar Nube,Save Cloud
 IniciarSesion,Iniciar Sesión,Login
 Registrar,Registrar,Register
-Usuario,Usuario,User
+Usuario,Usuario:,User:
 Nombre,Nombre Usuario,User Name
 Contrasena,Contraseña,Password
 Introducir,Introducir,Insert
+CargarNube,Cargar Nube,Load Cloud
+CargarLocal,Cargar Local,Load Local

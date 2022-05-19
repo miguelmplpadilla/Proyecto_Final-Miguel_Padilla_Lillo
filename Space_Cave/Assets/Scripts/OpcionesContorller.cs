@@ -107,8 +107,18 @@ public class OpcionesContorller : MonoBehaviour {
     public void cambiarNivel(bool nuevaPartida) {
         if (nuevaPartida) {
             borrarPartida();
+            SceneManager.LoadScene("Nivel1");
         }
-        SceneManager.LoadScene("Nivel1");
+        else
+        {
+            string nivel = "Nivel1";
+            if (PlayerPrefs.HasKey("nivel"))
+            {
+                nivel = PlayerPrefs.GetString("nivel");
+            }
+            
+            SceneManager.LoadScene(nivel);
+        }
     }
 
     public void salirJuego() {

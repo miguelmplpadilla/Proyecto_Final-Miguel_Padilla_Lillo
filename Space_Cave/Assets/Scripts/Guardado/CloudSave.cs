@@ -82,7 +82,7 @@ public class CloudSave : MonoBehaviour {
                     PlayerPrefs.SetInt("gun", resultado.GetInt32(7));
                     PlayerPrefs.Save();
 
-                    SceneManager.LoadScene("Nivel1");
+                    SceneManager.LoadScene(PlayerPrefs.GetString("nivel"));
                 }
                 else
                 {

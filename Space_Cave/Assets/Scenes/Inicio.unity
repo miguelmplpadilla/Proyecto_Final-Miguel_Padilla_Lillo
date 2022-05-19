@@ -807,6 +807,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1386449941}
     m_Modifications:
+    - target: {fileID: 2361846794873975778, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
+      propertyPath: boton
+      value: CargarLocal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527252778762614415, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
+      propertyPath: boton
+      value: CargarNube
+      objectReference: {fileID: 0}
     - target: {fileID: 6907678900565491998, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -977,7 +985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6907678901222282925, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
       propertyPath: m_Name
-      value: GuardadoPartida
+      value: CargadoPartida
       objectReference: {fileID: 0}
     - target: {fileID: 6907678901314353853, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2307,7 +2315,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 78.75
+  m_fontSize: 80.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
