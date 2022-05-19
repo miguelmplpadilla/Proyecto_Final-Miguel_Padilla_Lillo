@@ -31,6 +31,15 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetString("idioma", opcionesController.getIdioma());
         PlayerPrefs.SetString("nivel",SceneManager.GetActiveScene().name);
         PlayerPrefs.SetInt("puntos",puntosController.getPuntos());
+        if (gunController.gun)
+        {
+            PlayerPrefs.SetInt("gun", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("gun", 0);
+        }
+        PlayerPrefs.SetInt("autoGuardado", 0);
         PlayerPrefs.Save();
         
         bool decision = EditorUtility.DisplayDialog(

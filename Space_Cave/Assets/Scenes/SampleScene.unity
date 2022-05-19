@@ -288,6 +288,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuntoGuardado
       objectReference: {fileID: 0}
+    - target: {fileID: 3904203242529070579, guid: 8f47301b0863a9c4eb197ff5260c607e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3904203242529070580, guid: 8f47301b0863a9c4eb197ff5260c607e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1155,7 +1159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6131229267046429921, guid: 69ca1476551ee9d4b8b242a5bd4b0ccd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.2729797
+      value: -1.2729492
       objectReference: {fileID: 0}
     - target: {fileID: 6131229267046429921, guid: 69ca1476551ee9d4b8b242a5bd4b0ccd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1324,46 +1328,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2004279936}
     m_Modifications:
-    - target: {fileID: 6907678900418790053, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 48.199997
-      objectReference: {fileID: 0}
     - target: {fileID: 6907678900565491998, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 674932592}
-    - target: {fileID: 6907678900565491998, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: cerrarPanelGuardado
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678900622374680, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678900795187988, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678900818120897, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678900960786114, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678900960786117, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678901103553396, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678901190734008, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6907678901222282922, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1399,10 +1367,6 @@ PrefabInstance:
     - target: {fileID: 6907678901222282922, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
       propertyPath: m_SizeDelta.y
       value: -66.159
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678901222282922, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6907678901222282922, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1455,46 +1419,6 @@ PrefabInstance:
     - target: {fileID: 6907678901222282925, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
       propertyPath: m_Name
       value: GuardadoPartida
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678901222282925, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678901233293155, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 53.199997
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678901314353853, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678901596795541, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -34.300003
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678901776828825, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678902090920089, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_Name
-      value: GuardarPartidaTexto
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678902191074767, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678902239098720, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678902239098723, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907678902283961810, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -29.300003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69b3c1a44d736bf42b9eed25554dea6a, type: 3}

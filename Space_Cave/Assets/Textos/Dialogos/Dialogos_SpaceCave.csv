@@ -1,6 +1,6 @@
 NPC1,Hola camarada,Hi. comrade
-NPC1,Que tal has dormido?,How did you sleep?
-NPC1,He oido que te necesitan en el laboratorio mas adelante,Heard you're needed in the lab up ahead
+NPC1,Qué tal has dormido?,How did you sleep?
+NPC1,He oído que te necesitan en el laboratorio más adelante,Heard you're needed in the lab up ahead
 NuevaPartida,Nueva partida,New game
 CargarPartida,Cargar partida,Load game
 Opciones,Opciones,Options
@@ -11,25 +11,25 @@ Idioma,Idioma,Language
 NPC2,Hola camarada,Hi. comrade
 NPC2,Necesito que hagas unas cosas por mi,I need you to do some things for me
 NPC2,execute1,execute1
-NPC2,Que cojones a sido eso?,What the hell is happening?
-NPC2,Sera mejor que nos larguemos de aqui antes de que nos pase algo,It will be better that we leave here before something happens to us
+NPC2,Que cojones ha sido eso?,What the hell is happening?
+NPC2,Será mejor que nos larguemos de aquí antes de que nos pase algo,It will be better that we leave here before something happens to us
 NPC2,execute2,execute2
 NPC3,Tenemos un problema muy gordo camarada,We have a very big problem comrade
-NPC3,Nos estan atacando,They are attacking us
+NPC3,Nos están atacando,They are attacking us
 NPC3,execute3,execute3
 NPC3,Toma esta pistola para protegerte,Take this gun to protect yourself
-NPC3,Se recarga con el triangulo y se dispara con el cuadrado,Reloads with the triangle and fires with the square
+NPC3,Se recarga con el triángulo y se dispara con el cuadrado,Reloads with the triangle and fires with the square
 NPC3,Prueba con esas cajas que tienes delante,Try those boxes in front of you
 NPC3,Huye por esa puerta,Run out that door
 NPC3,execute2,execute2
 NPC4,Estamos muertos. estamos muertos,We are dead. we are dead
-NPC4,Tenemos que salir de aqui. me tienes que ayudar porfavor,We have to get out of here. you have to help me please
-NPC5,Ese tio de alli se esta volviendo loco,That guy over there is going crazy
+NPC4,Tenemos que salir de aquí. me tienes que ayudar por favor,We have to get out of here. you have to help me please
+NPC5,Ese tío de allí se está volviendo loco,That guy over there is going crazy
 NPC5,Malditos militares,Damn military
-NPC5,Por que los cientificos siempre nos tienen que pasar estas cosas,Why do scientists always have to pass these things on to us?
+NPC5,Porque los científicos siempre nos tienen que pasar estas cosas,Why do scientists always have to pass these things on to us?
 CargarPartidaNube,Cargar Partida Nube,Load Cloud Game
 GuardarNube,Guardar Nube,Save Cloud
-IniciarSesion,Iniciar Sesion,Login
+IniciarSesion,Iniciar Sesión,Login
 Registrar,Registrar,Register
 Usuario,Usuario,User
 Nombre,Nombre Usuario,User Name

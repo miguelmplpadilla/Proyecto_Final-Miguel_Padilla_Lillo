@@ -57,13 +57,17 @@ public class OpcionesContorller : MonoBehaviour {
     public void abrirOpciones() {
         if (!abriendo)
         {
-            if (!players[0].GetComponentInChildren<InteractuarController>().interaactuando)
+            
+            animatorPanelOpciones.SetTrigger("abrir");
+            abierto = true;
+            abriendo = true;
+            if (players.Count > 0)
             {
-                animatorPanelOpciones.SetTrigger("abrir");
-                abierto = true;
-                abriendo = true;
-                players[0].GetComponent<PlayerController>().mov = false;
-                players[0].GetComponentInChildren<InteractuarController>().interaactuando = true;
+                if (!players[0].GetComponentInChildren<InteractuarController>().interaactuando)
+                {
+                    players[0].GetComponent<PlayerController>().mov = false;
+                    players[0].GetComponentInChildren<InteractuarController>().interaactuando = true;
+                }
             }
         }
     }
@@ -71,11 +75,14 @@ public class OpcionesContorller : MonoBehaviour {
     public void cerrarOpciones() {
         if (!abriendo)
         {
-                animatorPanelOpciones.SetTrigger("cerrar");
-                abierto = false;
-                abriendo = true;
+            animatorPanelOpciones.SetTrigger("cerrar");
+            abierto = false;
+            abriendo = true;
+            if (players.Count > 0)
+            {
                 players[0].GetComponent<PlayerController>().mov = true;
-                players[0].GetComponentInChildren<InteractuarController>().interaactuando = false;
+                players[0].GetComponentInChildren<InteractuarController>().interaactuando = false;  
+            }
         }
     }
 
@@ -99,14 +106,30 @@ public class OpcionesContorller : MonoBehaviour {
 
     public void cambiarNivel(bool nuevaPartida) {
         if (nuevaPartida) {
-            PlayerPrefs.DeleteAll();
+            borrarPartida();
         }
         SceneManager.LoadScene("Nivel1");
     }
 
     public void salirJuego() {
+        if (PlayerPrefs.GetInt("autoGuardado") == 1)
+        {
+            borrarPartida();
+        }
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    private void borrarPartida()
+    {
+        PlayerPrefs.DeleteKey("vida");
+        PlayerPrefs.DeleteKey("balas");
+        PlayerPrefs.DeleteKey("playerX");
+        PlayerPrefs.DeleteKey("playerY");
+        PlayerPrefs.DeleteKey("nivel");
+        PlayerPrefs.DeleteKey("puntos");
+        PlayerPrefs.DeleteKey("gun");
+        PlayerPrefs.Save();
     }
     
 }

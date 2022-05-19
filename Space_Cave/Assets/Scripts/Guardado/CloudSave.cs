@@ -5,6 +5,7 @@ using MySql.Data.MySqlClient;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CloudSave : MonoBehaviour {
@@ -48,6 +49,63 @@ public class CloudSave : MonoBehaviour {
         }
     }
 
+    public void abrirMenu(GameObject menu)
+    {
+        menu.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+    }
+
+    public void cargarPartidaNube()
+    {
+        bool realizar = true;
+        if (!conectado) {
+            realizar = conectarBaseDatos();
+        }
+
+        if (realizar)
+        {
+            if (PlayerPrefs.HasKey("usuario"))
+            {
+                MySqlCommand cmd = conexion.CreateCommand();
+                cmd.CommandText = "SELECT * FROM `partida` WHERE `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"'";
+                MySqlDataReader resultado = cmd.ExecuteReader();
+
+                if (resultado.HasRows)
+                {
+                    PlayerPrefs.SetInt("vida", resultado.GetInt32("vida"));
+                    PlayerPrefs.SetString("nivel", resultado.GetString("nivel"));
+                    PlayerPrefs.SetInt("puntos", resultado.GetInt32("puntuacion"));
+                    PlayerPrefs.SetFloat("posicionX", resultado.GetFloat("posicionX"));
+                    PlayerPrefs.SetFloat("posicionY", resultado.GetFloat("posicionY"));
+                    PlayerPrefs.SetInt("gun", resultado.GetInt32("pistola"));
+                    PlayerPrefs.Save();
+
+                    SceneManager.LoadScene("Nivel1");
+                }
+                else
+                {
+                    bool decision = EditorUtility.DisplayDialog(
+                        "Error carga",
+                        "No existe ninguna partida guardada en el servidor", 
+                        "Ok"
+                    );
+                }
+            }else
+            {
+                bool decision = EditorUtility.DisplayDialog(
+                    "Error guardado",
+                    "Necesitas iniciar sesion para poder guardar en la nube", 
+                    "Ok"
+                );
+            }
+
+        } else {
+            bool decision = EditorUtility.DisplayDialog(
+                "Error de conexion",
+                "No se ha podido realizar la conexion a la base de datos, pruebe mas tarde", 
+                "Ok"
+            );
+        }
+    }
 
     public void registrar() {
         bool realizar = true;

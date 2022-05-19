@@ -90,7 +90,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.200012, y: 48.199993}
+  m_AnchoredPosition: {x: -5.200012, y: 48.199997}
   m_SizeDelta: {x: -432.906, y: -326.264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6907678900418790051
@@ -1704,7 +1704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6907678900960786114
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1714,7 +1714,7 @@ RectTransform:
   m_GameObject: {fileID: 6907678900960786117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6907678900418790053}
@@ -2884,7 +2884,7 @@ RectTransform:
   m_GameObject: {fileID: 6907678901222282925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6907678901627352170}
@@ -2973,7 +2973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.200012, y: 53.199993}
+  m_AnchoredPosition: {x: -5.200012, y: 53.199997}
   m_SizeDelta: {x: -432.906, y: -326.264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6907678901233293153
@@ -3831,7 +3831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.200012, y: -34.300007}
+  m_AnchoredPosition: {x: -5.200012, y: -34.300003}
   m_SizeDelta: {x: -432.906, y: -326.264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6907678901596795539
@@ -4865,7 +4865,7 @@ GameObject:
   - component: {fileID: 2361846794873975778}
   - component: {fileID: 6907678902090920087}
   m_Layer: 5
-  m_Name: GuardarTexto
+  m_Name: GuardarPartidaTexto
   m_TagString: Idioma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5909,7 +5909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6907678902239098720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5919,7 +5919,7 @@ RectTransform:
   m_GameObject: {fileID: 6907678902239098723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6907678901233293155}
@@ -6012,7 +6012,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.200012, y: -29.300007}
+  m_AnchoredPosition: {x: -5.200012, y: -29.300003}
   m_SizeDelta: {x: -432.906, y: -326.264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6907678902283961808
