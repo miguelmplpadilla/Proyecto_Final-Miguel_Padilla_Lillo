@@ -55,23 +55,21 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
-        /*if (PlayerPrefs.HasKey("vida"))
-        {
-            if (!SceneManager.GetActiveScene().name.Equals("SampleScene"))
-            {
-                life = PlayerPrefs.GetInt("vida");
-                gunController.bulletNum = PlayerPrefs.GetInt("balas");
-                gameObject.transform.position =
-                    new Vector2(PlayerPrefs.GetFloat("playerX"), PlayerPrefs.GetFloat("playerY"));
-                string nivel = PlayerPrefs.GetString("nivel");
-            }
-        }*/
-        
         if (PlayerPrefs.HasKey("vida"))
         {
             if (!SceneManager.GetActiveScene().name.Equals("SampleScene"))
             {
                 life = PlayerPrefs.GetInt("vida");
+                gunController.bulletNum = PlayerPrefs.GetInt("balas");
+                Debug.Log("X: "+PlayerPrefs.GetFloat("playerX")+" Y: "+PlayerPrefs.GetFloat("playerY"));
+                gameObject.transform.position =
+                    new Vector2(PlayerPrefs.GetFloat("playerX"), PlayerPrefs.GetFloat("playerY"));
+                string nivel = PlayerPrefs.GetString("nivel");
+
+                if (!SceneManager.GetActiveScene().name.Equals(nivel))
+                {
+                    SceneManager.LoadScene(nivel);
+                }
             }
         }
     }

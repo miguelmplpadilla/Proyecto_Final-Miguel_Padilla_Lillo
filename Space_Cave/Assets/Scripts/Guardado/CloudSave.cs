@@ -5,6 +5,7 @@ using MySql.Data.MySqlClient;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions.Comparers;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -69,14 +70,16 @@ public class CloudSave : MonoBehaviour {
                 cmd.CommandText = "SELECT * FROM `partida` WHERE `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"'";
                 MySqlDataReader resultado = cmd.ExecuteReader();
 
+                resultado.Read();
+                
                 if (resultado.HasRows)
                 {
-                    PlayerPrefs.SetInt("vida", resultado.GetInt32("vida"));
-                    PlayerPrefs.SetString("nivel", resultado.GetString("nivel"));
-                    PlayerPrefs.SetInt("puntos", resultado.GetInt32("puntuacion"));
-                    PlayerPrefs.SetFloat("posicionX", resultado.GetFloat("posicionX"));
-                    PlayerPrefs.SetFloat("posicionY", resultado.GetFloat("posicionY"));
-                    PlayerPrefs.SetInt("gun", resultado.GetInt32("pistola"));
+                    PlayerPrefs.SetInt("vida", resultado.GetInt32(6));
+                    PlayerPrefs.SetString("nivel", resultado.GetString(1));
+                    PlayerPrefs.SetInt("puntos", resultado.GetInt32(2));
+                    PlayerPrefs.SetFloat("playerX", float.Parse(resultado.GetString(3)));
+                    PlayerPrefs.SetFloat("playerY", float.Parse(resultado.GetString(4)));
+                    PlayerPrefs.SetInt("gun", resultado.GetInt32(7));
                     PlayerPrefs.Save();
 
                     SceneManager.LoadScene("Nivel1");
@@ -89,6 +92,9 @@ public class CloudSave : MonoBehaviour {
                         "Ok"
                     );
                 }
+                
+                resultado.Close();
+                
             }else
             {
                 bool decision = EditorUtility.DisplayDialog(
@@ -204,7 +210,7 @@ public class CloudSave : MonoBehaviour {
                     resultado1.Close();
                     MySqlCommand cmd = conexion.CreateCommand();
                 
-                    cmd.CommandText = "INSERT INTO `partida` (`id`,`nivel`, `puntuacion`, `posicionX`, `posicionY`, `fk_usuario`, `vida`, `pistola`) VALUES (NULL ,'"+PlayerPrefs.GetString("nivel")+"', '"+PlayerPrefs.GetString("puntos")+"', '"+PlayerPrefs.GetInt("playerX")+"', '"+PlayerPrefs.GetInt("playerY")+"', '"+PlayerPrefs.GetInt("idUsuario")+"', '"+PlayerPrefs.GetInt("vida")+"', '"+PlayerPrefs.GetInt("gun")+"')";
+                    cmd.CommandText = "INSERT INTO `partida` (`id`,`nivel`, `puntuacion`, `posicionX`, `posicionY`, `fk_usuario`, `vida`, `pistola`) VALUES (NULL ,'"+PlayerPrefs.GetString("nivel")+"', '"+PlayerPrefs.GetInt("puntos")+"', '"+PlayerPrefs.GetFloat("playerX")+"', '"+PlayerPrefs.GetFloat("playerY")+"', '"+PlayerPrefs.GetInt("idUsuario")+"', '"+PlayerPrefs.GetInt("vida")+"', '"+PlayerPrefs.GetInt("gun")+"')";
                     MySqlDataReader resultado = cmd.ExecuteReader();
                     resultado.Close();
                 }
@@ -213,7 +219,7 @@ public class CloudSave : MonoBehaviour {
                     resultado1.Close();
                     MySqlCommand cmd = conexion.CreateCommand();
                 
-                    cmd.CommandText = "UPDATE `partida` SET `id` = NULL,`nivel` = '"+PlayerPrefs.GetString("nivel")+"', `puntuacion` = '"+PlayerPrefs.GetString("puntos")+"', `posicionX` = '"+PlayerPrefs.GetInt("playerX")+"', `posicionY` = '"+PlayerPrefs.GetInt("playerY")+"', `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"', `vida` = '"+PlayerPrefs.GetInt("vida")+"', `pistola` = '"+PlayerPrefs.GetInt("gun")+"' WHERE fk_usuario = '"+PlayerPrefs.GetInt("idUsuario")+"'";
+                    cmd.CommandText = "UPDATE `partida` SET `nivel` = '"+PlayerPrefs.GetString("nivel")+"', `puntuacion` = '"+PlayerPrefs.GetInt("puntos")+"', `posicionX` = '"+PlayerPrefs.GetFloat("playerX")+"', `posicionY` = '"+PlayerPrefs.GetFloat("playerY")+"', `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"', `vida` = '"+PlayerPrefs.GetInt("vida")+"', `pistola` = '"+PlayerPrefs.GetInt("gun")+"' WHERE `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"'";
                     MySqlDataReader resultado = cmd.ExecuteReader();
                     resultado.Close();
                 }

@@ -38,7 +38,7 @@ public class GunController : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("gun"))
         {
-            if (!SceneManager.GetActiveScene().name.Equals("SampleScene") && !SceneManager.GetActiveScene().name.Equals("Nivel1"))
+            if (!SceneManager.GetActiveScene().name.Equals("SampleScene"))
             {
                 if (PlayerPrefs.GetInt("gun") == 1)
                 {
