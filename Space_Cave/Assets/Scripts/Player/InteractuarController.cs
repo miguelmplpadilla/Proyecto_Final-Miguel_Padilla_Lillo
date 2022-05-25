@@ -29,8 +29,8 @@ public class InteractuarController : MonoBehaviour
             if (!interaactuando) {
                 if (Input.GetButtonDown("Interactuar"))
                 {
-                    objectinteractuar.SendMessage("inter", gameObject);
                     interaactuando = true;
+                    objectinteractuar.SendMessage("inter", gameObject);
                 }
             }
         }

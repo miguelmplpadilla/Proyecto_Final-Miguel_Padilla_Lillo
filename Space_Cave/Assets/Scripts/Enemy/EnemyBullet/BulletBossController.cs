@@ -16,7 +16,7 @@ public class BulletBossController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("pared"))
+        if (col.CompareTag("colisionar"))
         {
             Destroy(gameObject);
         }

@@ -22,12 +22,17 @@ public class CofreController : MonoBehaviour {
         botonInteractuarController = GetComponentInChildren<BotonInteractuarController>();
     }
 
-    public void inter() {
+    public void inter( GameObject player) {
         if (enCollider && !abierto) {
             puntosController.setPuntos(puntos);
             gameObject.GetComponent<SpriteRenderer>().sprite = spriteAbierto;
             abierto = true;
             botonInteractuarController.visible();
+            player.GetComponentInChildren<InteractuarController>().interaactuando = false;
+        }
+        else
+        {
+            player.GetComponentInChildren<InteractuarController>().interaactuando = false;
         }
     }
 

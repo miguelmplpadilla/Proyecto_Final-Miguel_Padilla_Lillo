@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using TMPro;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 using UnityEngine.SceneManagement;
@@ -23,6 +23,7 @@ public class CloudSave : MonoBehaviour {
     public TMP_InputField contrasenaInicioSesion;
     public TMP_InputField nombreRegistro;
     public TMP_InputField contrasenaRegistro;
+    public TextMeshProUGUI textoError;
 
     public TextMeshProUGUI textoUsuario;
 
@@ -36,6 +37,12 @@ public class CloudSave : MonoBehaviour {
         conectarBaseDatos();
 
         setUsuarioTexto();
+    }
+
+    public void escribirError(string texto, Color color)
+    {
+        textoError.text = texto;
+        textoError.color = color;
     }
 
     private void setUsuarioTexto()
@@ -86,30 +93,36 @@ public class CloudSave : MonoBehaviour {
                 }
                 else
                 {
-                    bool decision = EditorUtility.DisplayDialog(
+                   /* bool decision = EditorUtility.DisplayDialog(
                         "Error carga",
                         "No existe ninguna partida guardada en el servidor", 
                         "Ok"
-                    );
+                    );*/
+                   
+                   escribirError("Error: No existe ninguna partida guardada en el servidor", Color.red);
                 }
                 
                 resultado.Close();
                 
             }else
             {
-                bool decision = EditorUtility.DisplayDialog(
+                /*bool decision = EditorUtility.DisplayDialog(
                     "Error guardado",
                     "Necesitas iniciar sesion para poder guardar en la nube", 
                     "Ok"
-                );
+                );*/
+                
+                escribirError("Error: Necesitas iniciar sesion para poder guardar en la nube", Color.red);
             }
 
         } else {
-            bool decision = EditorUtility.DisplayDialog(
+            /*bool decision = EditorUtility.DisplayDialog(
                 "Error de conexion",
                 "No se ha podido realizar la conexion a la base de datos, pruebe mas tarde", 
                 "Ok"
-            );
+            );*/
+            
+            escribirError("Error: No se ha podido realizar la conexion a la base de datos, pruebe mas tarde", Color.red);
         }
     }
 
@@ -126,21 +139,27 @@ public class CloudSave : MonoBehaviour {
         
             if (nombreRegistro.text.Length < 3 || nombreRegistro.text.Length > 10)
             {
-                bool decision = EditorUtility.DisplayDialog(
+                /*bool decision = EditorUtility.DisplayDialog(
                     "Error registro",
                     "Escribe un nombre de usuario", 
                     "Ok"
-                );
+                );*/
+                
+                escribirError("Error: Escribe un nombre de usuario", Color.red);
+                
                 correcto = false;
             }
         
             if (nombreRegistro.text.Length < 3 || nombreRegistro.text.Length > 10 && correcto)
             {
-                bool decision = EditorUtility.DisplayDialog(
+                /*bool decision = EditorUtility.DisplayDialog(
                     "Error registro",
                     "Escribe una contraseña", 
                     "Ok"
-                );
+                );*/
+                
+                escribirError("Error: Escribe una contraseña", Color.red);
+                
                 correcto = false;
             }
 
@@ -165,24 +184,28 @@ public class CloudSave : MonoBehaviour {
                 nombreRegistro.text = "";
                 contrasenaRegistro.text = "";
 
-                bool decision = EditorUtility.DisplayDialog(
+                /*bool decision = EditorUtility.DisplayDialog(
                     "Registro correcto",
                     "Usuario registrado correctamente", 
                     "Ok"
-                );
+                );*/
+                
+                escribirError("Usuario registrado correctamente", Color.green);
             
-                nombreRegistro.transform.parent.gameObject.SetActive(false);
+                nombreRegistro.transform.parent.GetComponent<RectTransform>().localScale = new Vector3(0, 1, 1);
             
                 setUsuarioTexto();
                 resultado.Close();
             }
         }
         else {
-            bool decision = EditorUtility.DisplayDialog(
+            /*bool decision = EditorUtility.DisplayDialog(
                 "Error de conexion",
                 "No se ha podido realizar la conexion a la base de datos, pruebe mas tarde", 
                 "Ok"
-            );
+            );*/
+            
+            escribirError("Error: No se ha podido realizar la conexion a la base de datos, pruebe mas tarde", Color.red);
         }
         
     }
@@ -224,27 +247,33 @@ public class CloudSave : MonoBehaviour {
                     resultado.Close();
                 }
                 
-                bool decision = EditorUtility.DisplayDialog(
+                /*bool decision = EditorUtility.DisplayDialog(
                     "Guardado en la nube correcto",
                     "Se ha guardado correctamente en la nube", 
                     "Ok"
-                );
+                );*/
+                
+                escribirError("Se ha guardado correctamente en la nube", Color.green);
             }
             else
             {
-                bool decision = EditorUtility.DisplayDialog(
+                /*bool decision = EditorUtility.DisplayDialog(
                     "Error guardado",
                     "Necesitas iniciar sesion para poder guardar en la nube", 
                     "Ok"
-                );
+                );*/
+                
+                escribirError("Error: Necesitas iniciar sesion para poder guardar en la nube", Color.red);
             }
         }
         else {
-            bool decision = EditorUtility.DisplayDialog(
+            /*bool decision = EditorUtility.DisplayDialog(
                 "Error en la base de datos",
                 "No se ha podido realizar la conexion con la base de datos, pruebe mas tarde", 
                 "Ok"
-            );
+            );*/
+            
+            escribirError("Error: No se ha podido realizar la conexion con la base de datos, pruebe mas tarde", Color.red);
         }
     }
 
@@ -263,11 +292,13 @@ public class CloudSave : MonoBehaviour {
 
             if (resultado.HasRows)
             {
-                bool decision = EditorUtility.DisplayDialog(
+                /*bool decision = EditorUtility.DisplayDialog(
                     "Inicio de sesion correcto",
                     "Se ha iniciado sesion correctamente", 
                     "Ok"
-                );
+                );*/
+                
+                escribirError("Se ha iniciado sesion correctamente", Color.green);
 
                 resultado.Read();
             
@@ -278,26 +309,30 @@ public class CloudSave : MonoBehaviour {
                 nombreInicioSesion.text = "";
                 contrasenaInicioSesion.text = "";
             
-                nombreInicioSesion.transform.parent.gameObject.SetActive(false);
+                nombreInicioSesion.transform.parent.GetComponent<RectTransform>().localScale = new Vector3(0, 1, 1);
                 setUsuarioTexto();
             }
             else
             {
-                bool decision = EditorUtility.DisplayDialog(
+                /*bool decision = EditorUtility.DisplayDialog(
                     "Error inicio de sesion",
                     "No se ha encontrado el usuario especificado", 
                     "Ok"
-                );
+                );*/
+                
+                escribirError("Error: No se ha encontrado el usuario especificado", Color.red);
             }
         
             resultado.Close();
         }
         else {
-            bool decision = EditorUtility.DisplayDialog(
+            /*bool decision = EditorUtility.DisplayDialog(
                 "Error en la base de datos",
                 "No se ha podido realizar la conexion con la base de datos, pruebe mas tarde", 
                 "Ok"
-            );
+            );*/
+            
+            escribirError("Error: No se ha podido realizar la conexion con la base de datos, pruebe mas tarde", Color.red);
         }
     }
 
@@ -310,8 +345,52 @@ public class CloudSave : MonoBehaviour {
         }
         catch (Exception error) {
             Debug.Log("Conexion incorrecta a base de datos: " + error);
+            escribirError("Error: Conexion incorrecta a base de datos: " + error.ToString(), Color.red);
             conectado = false;
             return false;
         }
     }
+
+    public void guardarHistorialPuntos()
+    {
+        bool realizar = true;
+        if (!conectado) {
+            realizar = conectarBaseDatos();
+        }
+
+        if (realizar) {
+
+            if (PlayerPrefs.HasKey("usuario"))
+            {
+                MySqlCommand cmd = conexion.CreateCommand();
+            
+                cmd.CommandText = "INSERT INTO `historial` (`id`,`modo_juego`, `puntos`, `fk_usuario`) VALUES (NULL , 'historia', '"+PlayerPrefs.GetInt("puntos")+"', '"+PlayerPrefs.GetInt("idUsuario")+"')";
+                MySqlDataReader resultado = cmd.ExecuteReader();
+                resultado.Close();
+            }
+            
+        }
+    }
+
+    public void borrarPartidaNube()
+    {
+        bool realizar = true;
+        if (!conectado) {
+            realizar = conectarBaseDatos();
+        }
+
+        if (realizar) {
+
+            if (PlayerPrefs.HasKey("usuario"))
+            {
+                MySqlCommand cmd = conexion.CreateCommand();
+
+                cmd.CommandText = "DELETE FROM `partida` WHERE `fk_usuario` = '"+PlayerPrefs.GetInt("idUsuario")+"'";
+                MySqlDataReader resultado = cmd.ExecuteReader();
+                resultado.Close();
+            }
+            
+        }
+    }
+    
 }

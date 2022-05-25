@@ -29,6 +29,7 @@ public class OpcionesContorller : MonoBehaviour {
     {
         cambioIdioma = GameObject.FindGameObjectsWithTag("Idioma").ToList();
         players = GameObject.FindGameObjectsWithTag("Player").ToList();
+        dropdown.value = dropdown.options.FindIndex(option => option.text == idioma);
     }
 
     private void Update()
@@ -127,10 +128,10 @@ public class OpcionesContorller : MonoBehaviour {
             borrarPartida();
         }
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
-    private void borrarPartida()
+    public void borrarPartida()
     {
         PlayerPrefs.DeleteKey("vida");
         PlayerPrefs.DeleteKey("balas");
@@ -140,6 +141,11 @@ public class OpcionesContorller : MonoBehaviour {
         PlayerPrefs.DeleteKey("puntos");
         PlayerPrefs.DeleteKey("gun");
         PlayerPrefs.Save();
+    }
+
+    public void volverInicio()
+    {
+        SceneManager.LoadScene("Inicio");
     }
     
 }

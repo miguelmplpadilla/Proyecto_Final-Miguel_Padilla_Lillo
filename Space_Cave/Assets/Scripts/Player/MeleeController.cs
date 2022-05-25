@@ -10,14 +10,14 @@ public class MeleeController : MonoBehaviour {
     private Collider2D otro;
 
     private void Update() {
-        if (enter == true) {
+        /*if (enter == true) {
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 if (otro.CompareTag("HurtBoxEnemy")) {
                     EnemyHurt hurt = otro.GetComponentInParent<EnemyHurt>();
                     hurt.Hit(damage, gameObject);
                 }
             }
-        }
+        }*/
     }
 
     private void OnTriggerStay2D(Collider2D other) {

@@ -50,5 +50,9 @@ public class OrdenadorController : MonoBehaviour
                 players[i].GetComponent<PlayerController>().mov = false;
             }
         }
+        else
+        {
+            players[0].GetComponentInChildren<InteractuarController>().interaactuando = false;
+        }
     }
 }

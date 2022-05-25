@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,11 +42,13 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetInt("autoGuardado", 0);
         PlayerPrefs.Save();
         
-        bool decision = EditorUtility.DisplayDialog(
+        /*bool decision = EditorUtility.DisplayDialog(
             "Guardado correcto",
             "Se ha guardado la partida correctamente", 
             "Ok"
-        );
+        );*/
+        
+        gameObject.GetComponent<CloudSave>().escribirError("Se ha guardado la partida correctamente", Color.green);
         
     }
 }
