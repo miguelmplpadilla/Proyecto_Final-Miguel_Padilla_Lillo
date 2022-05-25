@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ public class PalancaController : MonoBehaviour
     public Sprite palancaAbierta;
     public Sprite palancaCerrada;
     private BotonInteractuarController botonInteractuarController;
+    public CinemachineVirtualCamera camara;
+    private bool accionar = true;
 
     private void Awake() {
         botonInteractuarController = GetComponentInChildren<BotonInteractuarController>();
@@ -51,7 +54,7 @@ public class PalancaController : MonoBehaviour
 
     public void inter(GameObject p)
     {
-        if (accion == true)
+        if (accion && accionar)
         {
             abierto = !abierto;
             if (abierto == true)
@@ -63,6 +66,16 @@ public class PalancaController : MonoBehaviour
                 puerta.SetTrigger("cerrar");
             }
             p.GetComponentInChildren<InteractuarController>().interaactuando = false;
+            accionar = false;
+            StartCoroutine(moverPuerta(p));
         }
+    }
+    
+    IEnumerator moverPuerta(GameObject player)
+    {
+        camara.Follow = puerta.gameObject.transform;
+        yield return new WaitForSeconds(1f);
+        camara.Follow = player.transform;
+        accionar = true;
     }
 }
