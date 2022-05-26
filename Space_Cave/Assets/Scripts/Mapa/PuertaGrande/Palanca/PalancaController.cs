@@ -69,6 +69,10 @@ public class PalancaController : MonoBehaviour
             accionar = false;
             StartCoroutine(moverPuerta(p));
         }
+        else
+        {
+            p.GetComponentInChildren<InteractuarController>().interaactuando = false;
+        }
     }
     
     IEnumerator moverPuerta(GameObject player)

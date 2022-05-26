@@ -6609,6 +6609,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 560332314, guid: 921d2ab6fcf2c0f4ebfb2f855716802c, type: 3}
+      propertyPath: Priority
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 560332314, guid: 921d2ab6fcf2c0f4ebfb2f855716802c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 187c53843404f434fab9f8d43f776439, type: 3}
     - target: {fileID: 6412188474205122524, guid: 921d2ab6fcf2c0f4ebfb2f855716802c, type: 3}
       propertyPath: m_Follow
       value: 
@@ -8343,7 +8351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6131229267046429921, guid: 69ca1476551ee9d4b8b242a5bd4b0ccd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.9997406
+      value: -2.9997559
       objectReference: {fileID: 0}
     - target: {fileID: 6131229267046429921, guid: 69ca1476551ee9d4b8b242a5bd4b0ccd, type: 3}
       propertyPath: m_AnchoredPosition.y

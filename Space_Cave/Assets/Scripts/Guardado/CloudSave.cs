@@ -41,8 +41,16 @@ public class CloudSave : MonoBehaviour {
 
     public void escribirError(string texto, Color color)
     {
+        StopCoroutine("borrarError");
         textoError.text = texto;
         textoError.color = color;
+        StartCoroutine("borrarError");
+    }
+
+    IEnumerator borrarError()
+    {
+        yield return new WaitForSeconds(5f);
+        textoError.text = "";
     }
 
     private void setUsuarioTexto()

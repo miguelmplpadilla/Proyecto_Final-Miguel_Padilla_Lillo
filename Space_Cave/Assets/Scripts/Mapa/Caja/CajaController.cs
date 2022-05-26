@@ -9,6 +9,7 @@ public class CajaController : MonoBehaviour
     public int life = 3;
     private Blink blink;
     private Animator animator;
+    public GameObject moneda;
 
     private void Awake()
     {
@@ -21,6 +22,12 @@ public class CajaController : MonoBehaviour
         life--;
         if (life <= 0)
         {
+            GameObject monedaPrefab = (GameObject) Instantiate(moneda);
+        
+            monedaPrefab.SendMessageUpwards("setPuntos", 5);
+
+            monedaPrefab.transform.position = transform.position;
+            
             animator.SetTrigger("destruir");
         }
         else

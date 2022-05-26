@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 3
+  moneda: {fileID: 3649853541347263908, guid: 6004dc30be7eeb14faa04d33c5c987a5, type: 3}
 --- !u!61 &9128683242261264962
 BoxCollider2D:
   m_ObjectHideFlags: 0

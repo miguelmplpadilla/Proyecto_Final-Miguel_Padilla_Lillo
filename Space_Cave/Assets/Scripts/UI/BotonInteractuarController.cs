@@ -2,15 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BotonInteractuarController : MonoBehaviour {
 
     private SpriteRenderer spriteRenderer;
+    private Image image;
     public Sprite teclado;
     public Sprite mando;
+    public bool ui = false;
 
     private void Awake() {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        if (ui)
+        {
+            image = GetComponent<Image>();
+        }
+        else
+        {
+            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        }
     }
 
     private void Update() {
@@ -24,22 +34,48 @@ public class BotonInteractuarController : MonoBehaviour {
 
     private void LateUpdate()
     {
-        if (Input.GetJoystickNames().Length > 0)
+        if (ui)
         {
-            spriteRenderer.sprite = mando;
+            if (Input.GetJoystickNames().Length > 0)
+            {
+                image.sprite = mando;
+            }
+            else
+            {
+                image.sprite = teclado;
+            }
         }
         else
         {
-            spriteRenderer.sprite = teclado;
+            if (Input.GetJoystickNames().Length > 0)
+            {
+                spriteRenderer.sprite = mando;
+            }
+            else
+            {
+                spriteRenderer.sprite = teclado;
+            }
         }
     }
 
     public void visible() {
-        if (spriteRenderer.enabled) {
-            spriteRenderer.enabled = false;
+        if (ui)
+        {
+            if (image.enabled) {
+                image.enabled = false;
+            }
+            else {
+                image.enabled = true;
+            }
         }
-        else {
-            spriteRenderer.enabled = true;
+        else
+        {
+            if (spriteRenderer.enabled) {
+                spriteRenderer.enabled = false;
+            }
+            else {
+                spriteRenderer.enabled = true;
+            }
         }
     }
 }

@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 478628826633171355}
+  - component: {fileID: 8677625960684389920}
   - component: {fileID: 1244610424610145220}
   - component: {fileID: 7444584975056955471}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Boton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,6 +39,21 @@ RectTransform:
   m_AnchoredPosition: {x: 179.6, y: -23.13}
   m_SizeDelta: {x: -522.1204, y: -54.8267}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8677625960684389920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845052243450352417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909c4b9509d29a445851e40a43e615b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teclado: {fileID: -2117188880, guid: 323854c12de526c4aacdf7e8793ac2ad, type: 3}
+  mando: {fileID: 715907118, guid: 0199ed545bd914d448090517b463f9cd, type: 3}
+  ui: 1
 --- !u!222 &1244610424610145220
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +82,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -22363980, guid: 0199ed545bd914d448090517b463f9cd, type: 3}
+  m_Sprite: {fileID: 715907118, guid: 0199ed545bd914d448090517b463f9cd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

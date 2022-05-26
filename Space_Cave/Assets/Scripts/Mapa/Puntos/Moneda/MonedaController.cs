@@ -13,9 +13,20 @@ public class MonedaController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("Player")) {
-            puntosController.setPuntos(puntos);
-            Destroy(gameObject);
+            if (!GetComponent<AudioSource>().enabled)
+            {
+                puntosController.setPuntos(puntos);
+                GetComponent<AudioSource>().enabled = true;
+                GetComponent<SpriteRenderer>().enabled = false;
+                StartCoroutine("destruir");
+            }
         }
+    }
+
+    IEnumerator destruir()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 
     public void setPuntos(int p)
