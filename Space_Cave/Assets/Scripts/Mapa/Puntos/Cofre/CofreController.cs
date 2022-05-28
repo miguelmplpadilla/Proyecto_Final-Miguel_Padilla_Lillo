@@ -29,6 +29,7 @@ public class CofreController : MonoBehaviour {
             abierto = true;
             botonInteractuarController.visible();
             player.GetComponentInChildren<InteractuarController>().interaactuando = false;
+            GetComponent<AudioSource>().enabled = true;
         }
         else
         {

@@ -21,8 +21,9 @@ public class BotiquinController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = spriteSinBotiquin;
             botonInteractuarController.gameObject.SetActive(false);
             curado = true;
-            player.GetComponentInChildren<InteractuarController>().interaactuando = false;
         }
+        
+        player.GetComponentInChildren<InteractuarController>().interaactuando = false;
     }
 
     private void OnTriggerEnter2D(Collider2D col)

@@ -23,7 +23,9 @@ public class MovNivelesController : MonoBehaviour {
                 cloudSave.borrarPartidaNube();
             }
             
-            SceneManager.LoadScene(nivel);
+            PlayerPrefs.SetString("siguenteEscena", nivel);
+            
+            SceneManager.LoadScene("Load");
         }
     }
 }

@@ -28,23 +28,27 @@ public class OpcionesContorller : MonoBehaviour {
     private void Start()
     {
         cambioIdioma = GameObject.FindGameObjectsWithTag("Idioma").ToList();
+        cambioIdioma.AddRange(GameObject.FindGameObjectsWithTag("Interactuar").ToList());
         players = GameObject.FindGameObjectsWithTag("Player").ToList();
         dropdown.value = dropdown.options.FindIndex(option => option.text == idioma);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!SceneManager.GetActiveScene().name.Equals("Inicio"))
         {
-            if (!abierto)
+            if (Input.GetButtonDown("Opciones"))
             {
-                abrirOpciones();
-            }
-            else
-            {
-                cerrarOpciones();
-            }
+                if (!abierto)
+                {
+                    abrirOpciones();
+                }
+                else
+                {
+                    cerrarOpciones();
+                }
             
+            }
         }
     }
     
@@ -58,16 +62,24 @@ public class OpcionesContorller : MonoBehaviour {
     public void abrirOpciones() {
         if (!abriendo)
         {
-            
-            animatorPanelOpciones.SetTrigger("abrir");
-            abierto = true;
-            abriendo = true;
+            bool abrir = false;
             if (players.Count > 0)
             {
-                if (!players[0].GetComponentInChildren<InteractuarController>().interaactuando)
+                abrir = players[0].GetComponentInChildren<InteractuarController>().interaactuando;
+            }
+            
+            if (!abrir)
+            {
+                animatorPanelOpciones.SetTrigger("abrir");
+                abierto = true;
+                abriendo = true;
+                if (players.Count > 0)
                 {
-                    players[0].GetComponent<PlayerController>().mov = false;
-                    players[0].GetComponentInChildren<InteractuarController>().interaactuando = true;
+                    if (!players[0].GetComponentInChildren<InteractuarController>().interaactuando)
+                    {
+                        players[0].GetComponent<PlayerController>().mov = false;
+                        players[0].GetComponentInChildren<InteractuarController>().interaactuando = true;
+                    }
                 }
             }
         }
@@ -108,7 +120,8 @@ public class OpcionesContorller : MonoBehaviour {
     public void cambiarNivel(bool nuevaPartida) {
         if (nuevaPartida) {
             borrarPartida();
-            SceneManager.LoadScene("Nivel1");
+            
+            PlayerPrefs.SetString("siguenteEscena", "Nivel1");
         }
         else
         {
@@ -118,8 +131,10 @@ public class OpcionesContorller : MonoBehaviour {
                 nivel = PlayerPrefs.GetString("nivel");
             }
             
-            SceneManager.LoadScene(nivel);
+            PlayerPrefs.SetString("siguenteEscena", nivel);
         }
+        
+        SceneManager.LoadScene("Load");
     }
 
     public void salirJuego() {

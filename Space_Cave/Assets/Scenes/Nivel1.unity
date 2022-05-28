@@ -6613,6 +6613,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Salir
       objectReference: {fileID: 0}
+    - target: {fileID: 8518694309989141753, guid: 926b0f1d79b53b64392c01c06ef9a2ed, type: 3}
+      propertyPath: dropdown
+      value: 
+      objectReference: {fileID: 1031630410}
+    - target: {fileID: 8518694309989141753, guid: 926b0f1d79b53b64392c01c06ef9a2ed, type: 3}
+      propertyPath: animatorPanelOpciones
+      value: 
+      objectReference: {fileID: 1031630411}
     - target: {fileID: 8518694309989141755, guid: 926b0f1d79b53b64392c01c06ef9a2ed, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -15672,7 +15680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6131229267046429921, guid: 69ca1476551ee9d4b8b242a5bd4b0ccd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.9992523
+      value: -2.9992065
       objectReference: {fileID: 0}
     - target: {fileID: 6131229267046429921, guid: 69ca1476551ee9d4b8b242a5bd4b0ccd, type: 3}
       propertyPath: m_AnchoredPosition.y
