@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 8518694309471231333}
   - component: {fileID: 8518694309471231339}
   - component: {fileID: 8518694309471231332}
+  - component: {fileID: 4706949070872338274}
+  - component: {fileID: 5885743013193846482}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: Idioma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +137,32 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4706949070872338274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518694309471231334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8963fdc0895078e4d8dc7c9ea102f944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5885743013193846482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518694309471231334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0d51f27058c604daff7334c715282d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boton: Salir
+  dialogos: {fileID: 4900000, guid: 2b5b206a53d8a02459c83f14d8572e30, type: 3}
 --- !u!1 &8518694309989141748
 GameObject:
   m_ObjectHideFlags: 0
